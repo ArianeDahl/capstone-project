@@ -1,0 +1,12 @@
+/*
+export default function Fruits() {
+    return (
+        <>
+        <h1>Seasonal Fruits</h1>
+        <ul>
+        <li>{dataFruits}</li>
+        </ul>
+        </>
+    )
+};
+*/
