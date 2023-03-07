@@ -9,8 +9,8 @@ export default function Home() {
     <main>
       <div>
       <Header />
-      <h2>Seasonal Fruits & Veggies</h2>
-      <p>Eating seasonal made easy!</p>
+      <h2>Seasonal dishes made easy!</h2>
+      <p>See what fruits & vegetables are in season this month:</p>
       <FruitButton />
       <VeggieButton />
       </div>
