@@ -6,6 +6,7 @@ background: papayawhip;
 padding: 5px;
 
 `;
+
  const Title = styled.h1`
  color: darkgreen;
  `;
