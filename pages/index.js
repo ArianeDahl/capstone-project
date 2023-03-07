@@ -1,19 +1,17 @@
 import styled from "styled-components";
+import Header from "@/components/Header/header";
 
 export default function Home() {
   return (
     <main>
-      <Heading>Seasony</Heading>
       <div>
+      <Header />
       <h2>Seasonal Fruits & Veggies</h2>
       <p>Eating seasonal made easy!</p>
-      <button type="button">Fruits</button>
-      <button type="button">Veggies</button>
+      <button type="button" className="button">Fruits</button>
+      <button type="button" className="button">Veggies</button>
       </div>
     </main>
   );
 }
 
-const Heading = styled.h1`
-text-align: center;
-`;
