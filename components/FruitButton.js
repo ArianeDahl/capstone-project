@@ -1,34 +1,31 @@
 import styled from "styled-components";
 
 const ButtonComponent = styled.button`
-margin: 20px;
-padding: 20px;
-border-radius: 4px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 4px;
 
-justify-content: center;
-display: flex;
+  justify-content: center;
+  display: flex;
 
-:hover {
+  :hover {
     cursor: pointer;
     background-color: rgb(255, 243, 230);
   }
 `;
 
 const CenteredContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 30px;
-padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  padding: 20px;
 `;
 
-
 export default function FruitButton() {
-return (
+  return (
     <CenteredContainer>
-    <ButtonComponent>
-   Fruits
-    </ButtonComponent>
+      <ButtonComponent>Fruits</ButtonComponent>
     </CenteredContainer>
-)
+  );
 }
