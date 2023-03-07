@@ -23,9 +23,13 @@ const CenteredContainer = styled.div`
 `;
 
 export default function VeggieButton() {
+  const handleClick = () => {
+    console.log("Button was clicked!");
+  };
+
   return (
     <CenteredContainer>
-      <ButtonContainer>Veggies</ButtonContainer>
+      <ButtonContainer onClick={handleClick}>Veggies</ButtonContainer>
     </CenteredContainer>
   );
 }

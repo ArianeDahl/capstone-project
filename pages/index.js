@@ -1,6 +1,6 @@
-import FruitButton from "../components/FruitButton";
+import FruitButton from "@/components/FruitButton";
 import VeggieButton from "@/components/VeggieButton";
-import Header from "../components/Header";
+import Header from "@/components/Header";
 import styled from "styled-components";
 
 export default function Home() {

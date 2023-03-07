@@ -23,9 +23,12 @@ const CenteredContainer = styled.div`
 `;
 
 export default function FruitButton() {
+  const handleClick = () => {
+    console.log("Button was clicked!");
+  };
   return (
     <CenteredContainer>
-      <ButtonComponent>Fruits</ButtonComponent>
+      <ButtonComponent onClick={handleClick}>Fruits</ButtonComponent>
     </CenteredContainer>
   );
 }
