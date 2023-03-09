@@ -2,13 +2,13 @@ import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
 
-export default function Fruits() {
+export default function Vegetables() {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
 
-  const availableFruits = data.filter((item) => {
+  const availableVegetables = data.filter((item) => {
     return (
-      item.category === "Fruit" &&
+      item.category === "Vegetable" &&
       currentMonth >= item.month_start &&
       currentMonth <= item.month_end
     );
@@ -17,9 +17,9 @@ export default function Fruits() {
   return (
     <>
       <Header />
-      <h2>Available Fruits</h2>
+      <h2>Available Vegetables</h2>
       <ul>
-        {availableFruits.map((item) => (
+        {availableVegetables.map((item) => (
           <li key={item.id}>{item.name}</li>
         ))}
       </ul>
