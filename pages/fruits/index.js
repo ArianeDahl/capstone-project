@@ -31,6 +31,8 @@ export default function Fruits() {
 
 const FruitList = styled.ul`
   list-style: none;
+  padding: 0;
+  margin: 10px;
 `;
 
 const FruitItem = styled.li`
