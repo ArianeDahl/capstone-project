@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
+import styled from "styled-components";
 
 export default function Fruits() {
   const currentDate = new Date();
@@ -18,12 +19,24 @@ export default function Fruits() {
     <>
       <Header />
       <h2>Available Fruits</h2>
-      <ul>
+      <FruitList>
         {availableFruits.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <FruitItem key={item.id}>{item.name}</FruitItem>
         ))}
-      </ul>
+      </FruitList>
       <Link href="/">Home</Link>
     </>
   );
 }
+
+const FruitList = styled.ul`
+  list-style: none;
+`;
+
+const FruitItem = styled.li`
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+`;

@@ -29,10 +29,6 @@ const MainContainer = styled.main`
   padding: 20px;
 `;
 
-const Heading = styled.h2`
-  color: #333;
-`;
-
 const LinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,7 +47,6 @@ const StyledLink = styled.a`
   color: #333;
   font-size: 1.2rem;
   font-weight: bold;
-  font-family: italic;
   cursor: pointer;
   &:hover {
     background-color: darkgreen;
