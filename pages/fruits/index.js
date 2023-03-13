@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
 import styled from "styled-components";
+import BackButton from "@/components/BackButton";
 import Image from "next/image";
 
 export default function Fruits() {
@@ -30,7 +31,7 @@ export default function Fruits() {
           ))}
         </FruitList>
       </Container>
-      <Link href="/">Back</Link>
+      <BackButton />
     </>
   );
 }

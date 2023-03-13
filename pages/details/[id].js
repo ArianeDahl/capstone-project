@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import { data } from "@/lib/data";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import BackButton from "@/components/BackButton";
 //import Image from "next/image";
 
 export default function Details({ item }) {
@@ -17,7 +18,7 @@ export default function Details({ item }) {
           </Availability>
         </Item>
       </Container>
-      <Button onClick={() => router.back()}>Back</Button>
+      <BackButton />
     </>
   );
 }
