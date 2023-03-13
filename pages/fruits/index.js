@@ -19,15 +19,18 @@ export default function Fruits() {
   return (
     <>
       <Header />
-      <h2>Available Fruits</h2>
-      <FruitList>
-        {availableFruits.map((item) => (
-          <FruitItem key={item.id}>
-            {item.name} {item.src}
-          </FruitItem>
-        ))}
-      </FruitList>
-      <Link href="/">Home</Link>
+      <Container>
+        <h2>Available Fruits</h2>
+        <FruitList>
+          {availableFruits.map((item) => (
+            <FruitItem key={item.id}>
+              <h3>{item.name}</h3>
+              <Link href={`/details/${item.id}`}>Get some inspiration!</Link>
+            </FruitItem>
+          ))}
+        </FruitList>
+      </Container>
+      <Link href="/">Back</Link>
     </>
   );
 }
@@ -48,4 +51,8 @@ const FruitItem = styled.li`
   &:hover {
     background-color: papayawhip;
   }
+`;
+
+const Container = styled.div`
+  justify-content: center;
 `;

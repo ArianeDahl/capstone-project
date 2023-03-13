@@ -1,28 +1,59 @@
-import Image from "next/image";
-import Link from "next/link";
+import Header from "@/components/Header";
 import { data } from "@/lib/data";
 import styled from "styled-components";
+import { useRouter } from "next/router";
+//import Image from "next/image";
 
-export default function FruitDetails({ id }) {
-  const fruit = data.find((item) => item.id === parseInt(id));
-
+export default function Details({ item }) {
+  const router = useRouter();
   return (
     <>
-      <h2>{fruit.name}</h2>
-      <Image src={fruit.src} alt={fruit.name} width={300} height={300} />
-      <p>
-        Season: {fruit.season_start} - {fruit.season_end}
-      </p>
-      <Link href="/">Back to all Fruits</Link>
+      <Header />
+      <Container>
+        <Item>
+          <h2>{item.name}</h2>
+          <Availability>
+            Available from {item.month_start} to {item.month_end}
+          </Availability>
+        </Item>
+      </Container>
+      <Button onClick={() => router.back()}>Back</Button>
     </>
   );
 }
 
-/*
-    const router = useRouter();
-  const { id } = router.query;
-  const imageUrl = `/assets${id}.jpg`;
+export async function getStaticPaths() {
+  const paths = data.map((item) => ({
+    params: { id: item.id.toString() },
+  }));
 
-  return <Image src={imageUrl} alt={`Image ${id}`} width={50} height={50} />;
+  return { paths, fallback: false };
+}
 
-*/
+export async function getStaticProps({ params }) {
+  const item = data.find((item) => item.id.toString() === params.id);
+
+  return { props: { item } };
+}
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Item = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+`;
+
+const Availability = styled.p`
+  font-style: italic;
+  margin: 0.5rem 0;
+`;
+
+const Button = styled.button`
+  color: black;
+`;
