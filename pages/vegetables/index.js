@@ -18,19 +18,26 @@ export default function Vegetables() {
   return (
     <>
       <Header />
-      <h2>Available Vegetables</h2>
-      <VeggieList>
-        {availableVegetables.map((item) => (
-          <VeggieItem key={item.id}>{item.name}</VeggieItem>
-        ))}
-      </VeggieList>
-      <Link href="/">Home</Link>
+      <Container>
+        <h2>Available Vegetables</h2>
+        <VeggieList>
+          {availableVegetables.map((item) => (
+            <VeggieItem key={item.id}>
+              <h3>{item.name}</h3>
+              <Link href={`/details/${item.id}`}>Get some inspiration!</Link>
+            </VeggieItem>
+          ))}
+        </VeggieList>
+      </Container>
+      <Link href="/">Back</Link>
     </>
   );
 }
 
 const VeggieList = styled.ul`
   list-style: none;
+  padding: 0;
+  margin: 10px;
 `;
 
 const VeggieItem = styled.li`
@@ -39,4 +46,12 @@ const VeggieItem = styled.li`
   margin-bottom: 10px;
   padding: 10px;
   cursor: pointer;
+
+  &:hover {
+    background-color: papayawhip;
+  }
+`;
+
+const Container = styled.div`
+  justify-content: center;
 `;
