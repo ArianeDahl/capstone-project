@@ -18,6 +18,7 @@ export default function App({ Component, pageProps }) {
       `https://api.edamam.com/api/recipes/v2?type=public&q=apple&app_id=a57809bb&app_key=e7fef45f8e353f23a65c08642a5ea9fd&dishType=Main%20course`
     );
     const data = await response.json();
+    console.log(data);
   };
 
   //const { data, error } = useSWR("/api/recipes/v2", fetcher);
