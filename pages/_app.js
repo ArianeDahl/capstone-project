@@ -3,11 +3,8 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
-//const fetcher = (url) => fetch(url).then((res) => res.json());
-
 export default function App({ Component, pageProps }) {
-  const APP_ID = process.env.NEXT_PUBLIC_APP_ID;
-  const APP_KEY = process.env.NEXT_PUBLIC_APP_KEY;
+  /*
 
   useEffect(() => {
     getRecipes();
@@ -20,15 +17,15 @@ export default function App({ Component, pageProps }) {
     const data = await response.json();
     console.log(data);
   };
+   const [recipes, setRecipes] = useState([]);
+  const [query, setQuery] = useState();
+*/
 
-  //const { data, error } = useSWR("/api/recipes/v2", fetcher);
-
-  const [recipes, setRecipes] = useState([]);
   return (
     <>
       <GlobalStyle />
       <Head>
-        <title>Capstone Project</title>
+        <title>Capstone Project - Seasony</title>
       </Head>
       <Component {...pageProps} />
     </>
