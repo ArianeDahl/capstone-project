@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import styled from "styled-components";
 import Link from "next/link";
+import { CldImage } from "next-cloudinary";
 
 export default function Home() {
   return (

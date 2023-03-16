@@ -12,11 +12,11 @@ export default function Details({ item }) {
   const { data, error, isLoading } = useSWR("/api/recipes", fetcher);
 
   if (isLoading) {
-    return <h1>is loading</h1>;
+    return <h1>Loading...</h1>;
   }
 
   if (error) {
-    return <h1>error</h1>;
+    return <h1>Failed to load</h1>;
   }
 
   console.log(data);

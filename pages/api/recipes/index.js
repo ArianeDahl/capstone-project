@@ -9,3 +9,10 @@ export default async function handler(request, response) {
   const data = await apiResponse.json();
   response.json(data);
 }
+/*
+if (req.method === 'POST') {
+
+} else {
+    
+}
+*/
