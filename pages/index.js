@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import styled from "styled-components";
 import Link from "next/link";
+import { CldImage } from "next-cloudinary";
 
 export default function Home() {
   return (
@@ -11,12 +12,8 @@ export default function Home() {
           <h2>Seasonal dishes made easy!</h2>
           <p>See what fruits & vegetables are in season this month:</p>
           <LinkWrapper>
-            <Link href="/fruits">
-              <StyledLink>Fruits</StyledLink>
-            </Link>
-            <Link href="/vegetables">
-              <StyledLink>Veggies</StyledLink>
-            </Link>
+            <StyledLink href="/fruits">Fruits</StyledLink>
+            <StyledLink href="/vegetables">Veggies</StyledLink>
           </LinkWrapper>
         </>
       </MainContainer>
@@ -36,7 +33,7 @@ const LinkWrapper = styled.div`
   margin-top: 20px;
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   display: block;
   width: 150px;
   margin: 10px 0;
