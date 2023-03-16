@@ -19,6 +19,7 @@ const Button = styled.button`
   font-size: 16px;
   padding: 8px 16px;
   transition: all 0.2s ease-in-out;
+
   &:hover {
     background-color: darkgreen;
     color: #ffffff;
