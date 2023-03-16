@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
+import BackButton from "@/components/BackButton";
 import { data } from "@/lib/data";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+
 //import Image from "next/image";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -31,7 +33,7 @@ export default function Details({ item }) {
           </Availability>
         </Item>
       </Container>
-      <Button onClick={() => router.back()}>Back</Button>
+      <BackButton />
     </>
   );
 }

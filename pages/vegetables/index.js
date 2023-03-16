@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
 import styled from "styled-components";
+import BackButton from "@/components/BackButton";
 
 export default function Vegetables() {
   const currentDate = new Date();
@@ -29,7 +30,7 @@ export default function Vegetables() {
           ))}
         </VeggieList>
       </Container>
-      <Link href="/">Back</Link>
+      <BackButton />
     </>
   );
 }
