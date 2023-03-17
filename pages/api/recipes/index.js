@@ -10,6 +10,10 @@ export default async function handler(request, response) {
   response.json(data);
 }
 /*
+response.status(200).json(recipe);
+
+
+
 if (req.method === 'POST') {
 
 } else {

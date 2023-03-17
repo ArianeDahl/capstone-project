@@ -4,6 +4,7 @@ import { data } from "@/lib/data";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import Recipe from "@/components/Recipe";
 //import Image from "next/image";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -30,13 +31,23 @@ export default function Details({ item }) {
           <Availability>
             Available from {item.month_start} to {item.month_end}
           </Availability>
+          <Recipe />
         </Item>
       </Container>
       <BackButton />
     </>
   );
 }
-
+/*
+{data.results.map((recipe) => (
+            <Recipe
+              key={recipe.id}
+              id={recipe.id}
+              title={recipe.title}
+              img={recipe.image}
+            />
+          ))}
+*/
 export async function getStaticPaths() {
   const paths = data.map((item) => ({
     params: { id: item.id.toString() },
