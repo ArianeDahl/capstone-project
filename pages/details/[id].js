@@ -22,6 +22,8 @@ export default function Details({ item }) {
   }
 
   console.log(data);
+  const recipes = data?.hits.slice(0, 5); //only display the first five recipes
+
   return (
     <>
       <Header />
@@ -31,22 +33,25 @@ export default function Details({ item }) {
           <Availability>
             Available from {item.month_start} to {item.month_end}
           </Availability>
-          <Recipe />
+          <RecipeList>
+            {recipes.map((recipe) => (
+              <Recipe
+                key={recipe.recipe.label}
+                title={recipe.recipe.label}
+                image={recipe.recipe.image}
+                ingredients={recipe.recipe.ingredients}
+              />
+            ))}
+          </RecipeList>
         </Item>
       </Container>
       <BackButton />
     </>
   );
 }
+
 /*
-{data.results.map((recipe) => (
-            <Recipe
-              key={recipe.id}
-              id={recipe.id}
-              title={recipe.title}
-              img={recipe.image}
-            />
-          ))}
+
 */
 export async function getStaticPaths() {
   const paths = data.map((item) => ({
@@ -83,4 +88,9 @@ const Availability = styled.p`
 const Button = styled.button`
   color: black;
 `;
-// https://api.edamam.com/api/recipes/v2?type=public&q=apple&app_id=a57809bb&app_key=e7fef45f8e353f23a65c08642a5ea9fd&dishType=Main%20course
+
+const RecipeList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+`;

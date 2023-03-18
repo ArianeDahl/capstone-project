@@ -11,8 +11,11 @@ export default async function handler(request, response) {
 }
 /*
 response.status(200).json(recipe);
+response.status(404).json({message: `Item not found.`})
 
-
+ ?const { query } = req
+  const { id } = query
+  const person = people.find((p) => p.id === id)?
 
 if (req.method === 'POST') {
 
