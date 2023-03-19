@@ -38,7 +38,7 @@ export default function Details({ item }) {
               <Recipe
                 key={recipe.recipe.label}
                 title={recipe.recipe.label}
-                image={recipe.recipe.image}
+                image={recipe.recipe.images}
                 ingredients={recipe.recipe.ingredients}
               />
             ))}

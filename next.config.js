@@ -14,7 +14,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "edamam.com",
+        hostname: "images.edamam.com",
       },
       // {
       //   protocol: 'https',
