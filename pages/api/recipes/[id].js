@@ -11,7 +11,3 @@ export default async function handler(request, response) {
   const apiData = await apiResponse.json();
   response.json(apiData);
 }
-/*
-response.status(200).json(recipe);
-response.status(404).json({ message: `Item not found.` });
-*/
