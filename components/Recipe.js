@@ -2,13 +2,17 @@ import styled from "styled-components";
 import Image from "next/image";
 
 const Recipe = ({ title, image, ingredients, label }) => {
+  const ingredientsWithId = ingredients.map((ingredient, index) => ({
+    ...ingredient,
+    id: index + 1,
+  }));
   return (
     <RecipeContainer>
       <Title>{title}</Title>
       <Image src={image} alt={title} height={200} width={200} />
       <IngredientsList>
-        {ingredients.map((ingredient) => (
-          <li key={label}>{ingredient}</li>
+        {ingredientsWithId.map((ingredient) => (
+          <li key={ingredient.id}>{ingredient.text}</li>
         ))}
       </IngredientsList>
     </RecipeContainer>

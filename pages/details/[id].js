@@ -11,7 +11,8 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Details({ item }) {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR("/api/recipes", fetcher);
+  const { id } = router.query;
+  const { data, error, isLoading } = useSWR(`/api/recipes/${id}`, fetcher);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -21,8 +22,8 @@ export default function Details({ item }) {
     return <h1>Failed to load</h1>;
   }
 
-  console.log(data);
   const recipes = data?.hits.slice(0, 5); //only display the first five recipes
+  console.log(recipes);
 
   return (
     <>
@@ -31,7 +32,14 @@ export default function Details({ item }) {
         <Item>
           <h2>{item.name}</h2>
           <Availability>
-            Available from {item.month_start} to {item.month_end}
+            Available from{" "}
+            {new Date(item.season_start).toLocaleString("default", {
+              month: "long",
+            })}{" "}
+            to{" "}
+            {new Date(item.season_end).toLocaleString("default", {
+              month: "long",
+            })}
           </Availability>
           <RecipeList>
             {recipes.map((recipe) => {
@@ -40,7 +48,7 @@ export default function Details({ item }) {
                   key={recipe.recipe.label}
                   title={recipe.recipe.label}
                   image={recipe.recipe.images.SMALL.url}
-                  ingredients={recipe.recipe.ingredientLines}
+                  ingredients={recipe.recipe.ingredients}
                 />
               );
             })}
