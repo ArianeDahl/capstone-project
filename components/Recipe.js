@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-const Recipe = ({ title, image, ingredients, id }) => {
+const Recipe = ({ title, image, ingredients, label }) => {
   return (
     <RecipeContainer>
       <Title>{title}</Title>
-      <Image src={image} alt={title} height={144} width={144} />
-      <ul>
+      <Image src={image} alt={title} height={200} width={200} />
+      <IngredientsList>
         {ingredients.map((ingredient) => (
-          <li key={id}>{ingredients.text}</li>
+          <li key={label}>{ingredient}</li>
         ))}
-      </ul>
+      </IngredientsList>
     </RecipeContainer>
   );
 };
@@ -27,27 +27,8 @@ const Title = styled.h3`
   color: darkgreen;
 `;
 
-/*
-
-ol>
-        {ingredients.map((ingredient) => (
-          <li key={id}>{ingredients.text}</li>
-        ))}
-      </ol> 
-
 const IngredientsList = styled.ul`
   margin-top: 1rem;
   padding-left: 0;
   list-style-type: none;
 `;
-
-
-      
-      <IngredientsList>
-        {ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient.text}</li>
-        ))}
-      </IngredientsList>
-    
-
-      */

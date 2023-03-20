@@ -34,14 +34,16 @@ export default function Details({ item }) {
             Available from {item.month_start} to {item.month_end}
           </Availability>
           <RecipeList>
-            {recipes.map((recipe) => (
-              <Recipe
-                key={recipe.recipe.label}
-                title={recipe.recipe.label}
-                image={recipe.recipe.images}
-                ingredients={recipe.recipe.ingredients}
-              />
-            ))}
+            {recipes.map((recipe) => {
+              return (
+                <Recipe
+                  key={recipe.recipe.label}
+                  title={recipe.recipe.label}
+                  image={recipe.recipe.images.SMALL.url}
+                  ingredients={recipe.recipe.ingredientLines}
+                />
+              );
+            })}
           </RecipeList>
         </Item>
       </Container>
