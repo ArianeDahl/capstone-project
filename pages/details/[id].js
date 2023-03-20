@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Recipe from "@/components/Recipe";
-//import Image from "next/image";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -23,7 +22,6 @@ export default function Details({ item }) {
   }
 
   const recipes = data?.hits.slice(0, 5); //only display the first five recipes
-  console.log(recipes);
 
   return (
     <>
@@ -60,9 +58,6 @@ export default function Details({ item }) {
   );
 }
 
-/*
-
-*/
 export async function getStaticPaths() {
   const paths = data.map((item) => ({
     params: { id: item.id.toString() },
