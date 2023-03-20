@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: { scrollRestoration: true },
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
@@ -10,6 +11,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "edamam-product-images.s3.amazonaws.com",
       },
       // {
       //   protocol: 'https',
