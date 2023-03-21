@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Recipe from "@/components/Recipe";
+import Form from "@/components/Form";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -32,6 +33,7 @@ export default function Details({ item }) {
           <Availability>
             Available from{" "}
             {new Date(item.season_start).toLocaleString("default", {
+              // number -> word (months)
               month: "long",
             })}{" "}
             to{" "}
@@ -51,6 +53,7 @@ export default function Details({ item }) {
               );
             })}
           </RecipeList>
+          <Form />
         </Item>
       </Container>
       <BackButton />
@@ -71,7 +74,7 @@ export async function getStaticProps({ params }) {
 
   return { props: { item } };
 }
-
+// display fruit or veggie that the user selected
 const Container = styled.div`
   display: flex;
   flex-direction: column;
