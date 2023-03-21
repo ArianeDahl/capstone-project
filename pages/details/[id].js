@@ -53,9 +53,11 @@ export default function Details({ item }) {
               );
             })}
           </RecipeList>
-          <Form />
         </Item>
       </Container>
+
+      <Form />
+
       <BackButton />
     </>
   );
