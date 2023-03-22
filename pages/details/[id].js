@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Recipe from "@/components/Recipe";
-import Form from "../form";
+import Form from "@/components/Form";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
