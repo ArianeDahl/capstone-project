@@ -6,6 +6,14 @@ export default function CommentsPage() {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
+  const endpoint = "/api/form"; //API endpoint where we send form data
+
+  const fetchComments = async () => {
+    const response = await fetch(endpoint);
+    const result = await response.json();
+    setComments(result);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const dataForm = {
@@ -14,8 +22,6 @@ export default function CommentsPage() {
       comment: event.target.comment.value,
     };
     const JSONdata = JSON.stringify(dataForm); //send data to server in JSON format
-
-    const endpoint = "/api/form"; //API endpoint where we send form data
 
     const options = {
       method: "POST",
@@ -26,13 +32,16 @@ export default function CommentsPage() {
     };
     const response = await fetch(endpoint, options); //send the form data to API and Vercel and get a response
     const result = await response.json(); //convert response it into json
-    setComments(result);
+    setComment(result);
     alert(`Is this your full name: ${result.dataForm}`); // If server returns submitted name -> form works
   };
   return (
     <>
       <form onSubmit={handleSubmit}>
         <Form />
+        <button type="submit" onClick={"submitComment"}>
+          Submit
+        </button>
       </form>
     </>
   );
