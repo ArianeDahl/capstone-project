@@ -7,6 +7,34 @@ import useSWR from "swr";
 import Recipe from "@/components/Recipe";
 import Form from "@/components/Form";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Item = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+`;
+
+const Availability = styled.p`
+  font-style: italic;
+  margin: 0.5rem 0;
+`;
+
+const Button = styled.button`
+  color: black;
+`;
+
+const RecipeList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+`;
+
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Details({ item }) {
@@ -55,9 +83,7 @@ export default function Details({ item }) {
           </RecipeList>
         </Item>
       </Container>
-
       <Form />
-
       <BackButton />
     </>
   );
@@ -76,31 +102,3 @@ export async function getStaticProps({ params }) {
 
   return { props: { item } };
 }
-// display fruit or veggie that the user selected
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Item = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem;
-`;
-
-const Availability = styled.p`
-  font-style: italic;
-  margin: 0.5rem 0;
-`;
-
-const Button = styled.button`
-  color: black;
-`;
-
-const RecipeList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 10px;
-`;
