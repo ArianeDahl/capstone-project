@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import { uid } from "uid";
 
 const FormContainer = styled.div`
   display: flex;
@@ -29,6 +31,12 @@ const FormField = styled.div`
   }
 `;
 
+const CommentList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+`;
+
 const FormButton = styled.button`
   color: black;
   background-color: #b76e79;
@@ -43,42 +51,39 @@ const FormButton = styled.button`
     color: white;
   }
 `;
+
 export default function Form() {
-  const [comment, setComment] = useState("");
-
-  const endpoint = "/api/form"; //API endpoint where we send form data
-  /*
   const [comments, setComments] = useState([]);
-  const fetchComments = async () => {
-    const response = await fetch(endpoint);
-    const result = await response.json();
-    setComments(result);
-  };
-*/
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const dataForm = {
-      recipe: event.target.recipe.value,
-      name: event.target.name.value,
-      comment: event.target.comment.value,
-    };
-    const JSONdata = JSON.stringify(dataForm); //send data to server in JSON format
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata, //JSON data we send above
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const id = uid();
+
+    const newComment = {
+      id: uid(),
+      recipe: event.target.elements.recipe.value,
+      name: event.target.elements.name.value,
+      comment: event.target.elements.comment.value,
+      taste: event.target.elements.taste.value,
+      level: event.target.elements.level.value,
     };
-    const response = await fetch(endpoint, options); //send the form data to API and Vercel and get a response
-    const result = await response.json(); //convert response it into json
-    setComment(result);
-    console.log(result);
+
+    //const newComment = { recipe, name, comment, taste, level, id };
+    //Immutability principle -> need to create new array with updated comments
+    setComments([...comments, newComment]);
+    //save comments to local storage
+    localStorage.setItem("comments", JSON.stringify([...comments, newComment]));
+    //clear form
+    event.target.reset();
   };
-  const comments = JSON.parse(localStorage.getItem("comments")) || [];
-  comments.push(dataForm);
-  localStorage.setItem("comments", JSON.stringify(comments));
+
+  // display comments
+  useEffect(() => {
+    const storedComments = localStorage.getItem("comments");
+    if (storedComments) {
+      setComments(JSON.parse(storedComments));
+    }
+  }, []);
 
   return (
     <>
@@ -143,6 +148,15 @@ export default function Form() {
           <FormButton type="submit">Submit</FormButton>
         </form>
       </FormContainer>
+
+      {/* <CommentList>
+        {comments.map((comment) => (
+          <li key={comment.id}>
+            {comment.recipe} {comment.name}
+            {comment.comment}
+          </li>
+        ))}
+      </CommentList> */}
     </>
   );
 }

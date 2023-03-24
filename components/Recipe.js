@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-const Recipe = ({ title, image, ingredients, label }) => {
+const Recipe = ({ title, image, ingredients }) => {
   const ingredientsWithId = ingredients.map((ingredient, index) => ({
     ...ingredient,
     id: index + 1,

@@ -6,6 +6,9 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import Recipe from "@/components/Recipe";
 import Form from "@/components/Form";
+import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const Container = styled.div`
   display: flex;
@@ -37,10 +40,28 @@ const RecipeList = styled.ul`
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function Details({ item }) {
+export default function Details({ item, recipesArray, setRecipesArray }) {
   const router = useRouter();
   const { id } = router.query;
   const { data, error, isLoading } = useSWR(`/api/recipes/${id}`, fetcher);
+
+  useEffect(() => {
+    const recipes = data?.hits.slice(0, 5); //only display the first five recipes
+    if (recipes) {
+      setRecipesArray(
+        recipes.map((recipe) => {
+          return {
+            slug: recipe.recipe.label
+              .replace(",", "")
+              .toLocaleLowerCase()
+              .split(" ")
+              .join("-"),
+            ...recipe,
+          };
+        })
+      );
+    }
+  }, [data]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -49,8 +70,6 @@ export default function Details({ item }) {
   if (error) {
     return <h1>Failed to load</h1>;
   }
-
-  const recipes = data?.hits.slice(0, 5); //only display the first five recipes
 
   return (
     <>
@@ -70,14 +89,20 @@ export default function Details({ item }) {
             })}
           </Availability>
           <RecipeList>
-            {recipes.map((recipe) => {
+            {recipesArray.map((recipe) => {
+              console.log(recipe);
               return (
-                <Recipe
-                  key={recipe.recipe.label}
-                  title={recipe.recipe.label}
-                  image={recipe.recipe.images.SMALL.url}
-                  ingredients={recipe.recipe.ingredients}
-                />
+                <div key={recipe.slug}>
+                  <h3>{recipe.recipe.label}</h3>
+                  <Link href={`/recipes/${recipe.slug}`}>
+                    <Image
+                      src={recipe.recipe.images.SMALL.url}
+                      alt={recipe.recipe.label}
+                      height={200}
+                      width={200}
+                    />
+                  </Link>
+                </div>
               );
             })}
           </RecipeList>
@@ -88,7 +113,7 @@ export default function Details({ item }) {
     </>
   );
 }
-
+// display fruit or veggie that the user selected
 export async function getStaticPaths() {
   const paths = data.map((item) => ({
     params: { id: item.id.toString() },
