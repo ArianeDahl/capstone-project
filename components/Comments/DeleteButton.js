@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { LocalStorageState } from "use-local-storage-state";
 
 export const DeleteButton = styled.button`
 
@@ -14,4 +15,11 @@ cursor: pointer;
   background-color: grey;
   color: white;
 `;
-/**onClick={() => handleDelete(comment.id)} */
+
+/**onClick={() => handleDelete(comment.id)}
+
+function handleDelete(comment.id) {
+  const updateForm = 
+}
+
+ */

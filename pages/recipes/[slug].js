@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Form from "@/components/Form/Form";
 import BackButton from "@/components/BackButton";
 import Recipe from "@/components/Recipe";
-import CommentSection from "@/components/Form/Comments";
+import CommentSection from "@/components/Comments/Comments";
 
 export default function RecipeDetails({ recipesArray }) {
   const router = useRouter();

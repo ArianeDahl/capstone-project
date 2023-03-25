@@ -1,39 +1,12 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { DeleteButton } from "./DeleteButton";
-
-const CommentContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin: 30px 15px;
-  padding-bottom: 20px;
-  background-color: #f4e6e7;
-`;
-
-const TitleContainer = styled.div`
-  background-color: #b76e79;
-  margin: 10px;
-`;
-
-const CommentList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 10px;
-`;
-
-const CommentItem = styled.li`
-  margin: 10px;
-  padding: 10px;
-  border: double 5px;
-  border-color: #b0757e;
-
-  position: relative;
-
-  & > ${DeleteButton} {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-`;
+import {
+  CommentContainer,
+  CommentList,
+  CommentItem,
+  TitleContainer,
+} from "./StyledComments";
 
 export default function CommentSection() {
   const [comments, setComments] = useState([]);
@@ -49,6 +22,11 @@ export default function CommentSection() {
     (comment) => comment.recipeSlug === recipe.slug
   );
 */
+  const handleDelete = (id) => {
+    const newComments = comments.filter((comment) => comment.id !== id);
+    setComments(newComments);
+    localStorage.setItem("comments", JSON.stringify(newComments));
+  };
 
   return (
     <>
@@ -59,7 +37,9 @@ export default function CommentSection() {
         <CommentList>
           {comments.map((comment) => (
             <CommentItem key={comment.id}>
-              <DeleteButton>x</DeleteButton>
+              <DeleteButton onClick={() => handleDelete(comment.id)}>
+                x
+              </DeleteButton>
               <p>
                 <strong>Name:</strong> {comment.name}
               </p>
@@ -78,7 +58,12 @@ export default function CommentSection() {
     </>
   );
 }
+
 /*
+<DeleteButton onClick={() => handleDelete(comment.id)}>
+                    Delete
+                  </DeleteButton>
+
 <CommentItem key={comment.id} style={{ display: "flex", alignItems: "flex-start" }}>
   <DeleteButton>x</DeleteButton>
   <div>
