@@ -7,7 +7,7 @@ const HeadContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  color: darkgreen;
+  color: #b76e79;
   padding: 10px;
   margim: 20px;
 `;

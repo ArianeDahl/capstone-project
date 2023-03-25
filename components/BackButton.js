@@ -18,6 +18,8 @@ const Button = styled.button`
   cursor: pointer;
   font-size: 16px;
   padding: 8px 16px;
+  margin-bottom: 30px;
+  margin-top: 20px;
   transition: all 0.2s ease-in-out;
 
   &:hover {

@@ -8,8 +8,9 @@ const Recipe = ({ title, image, ingredients }) => {
   }));
   return (
     <RecipeContainer>
-      <Title>{title}</Title>
+      <RecipeTitle>{title}</RecipeTitle>
       <Image src={image} alt={title} height={200} width={200} />
+      <Title>Ingredients:</Title>
       <IngredientsList>
         {ingredientsWithId.map((ingredient) => (
           <li key={ingredient.id}>{ingredient.text}</li>
@@ -27,8 +28,15 @@ const RecipeContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
+const RecipeTitle = styled.h2`
+  color: black;
+  margin: 20px;
+  padding: 20px;
+`;
 const Title = styled.h3`
-  color: darkgreen;
+  padding: 20px;
+  margin: 20px;
+  margin-bottom: 0px;
 `;
 
 const IngredientsList = styled.ul`

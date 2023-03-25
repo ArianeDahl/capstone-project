@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Recipe from "@/components/Recipe";
-import Form from "@/components/Form";
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,6 +20,10 @@ const Item = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 2rem;
+`;
+
+const Title = styled.h2`
+  padding: 10px;
 `;
 
 const Availability = styled.p`
@@ -76,21 +79,23 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
       <Header />
       <Container>
         <Item>
-          <h2>{item.name}</h2>
+          <Title>{item.name}</Title>
           <Availability>
-            Available from{" "}
+            Availability:{" "}
             {new Date(item.season_start).toLocaleString("default", {
-              // number -> word (months)
               month: "long",
             })}{" "}
-            to{" "}
+            -{" "}
             {new Date(item.season_end).toLocaleString("default", {
               month: "long",
             })}
           </Availability>
+          <p>
+            Here are a few ideas. Click on the image for more details and
+            rating.
+          </p>
           <RecipeList>
             {recipesArray.map((recipe) => {
-              console.log(recipe);
               return (
                 <div key={recipe.slug}>
                   <h3>{recipe.recipe.label}</h3>
@@ -108,7 +113,6 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
           </RecipeList>
         </Item>
       </Container>
-      <Form />
       <BackButton />
     </>
   );

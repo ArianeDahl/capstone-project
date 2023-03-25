@@ -12,37 +12,59 @@ const FormContainer = styled.div`
 
 const FormTitle = styled.h3`
   font-size: 1, 5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 30px;
+  color: #9d4e5a;
 `;
 
-const FormField = styled.div`
+const FormField = styled.form`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
   width: 100%;
-
-  input[type="text"],
-  input[type="range"] {
-    border-radius: 4px;
-    border: 1px solid #b76e79;
-    padding: 0.5rem;
-    font-size: 1rem;
-    width: 100%;
-  }
+  background-color: #fbeed9;
+  padding: 20px;
+  border-radius: 5px;
 `;
 
-const CommentList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 10px;
+const StyledLabel = styled.label`
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #575d57;
+`;
+
+const SytledInput = styled.input`
+  border-radius: 5px;
+  border: 1px solid #b76e79;
+  padding: 0.5rem;
+  font-size: 1rem;
+`;
+const SytledRange = styled.input`
+
+&::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: #green;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background-color: #9d4e5a;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 `;
 
 const FormButton = styled.button`
   color: black;
   background-color: #b76e79;
   border: none;
-  border-radius: 4px;
-  padding: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
   font-size: 1rem;
   cursor: pointer;
 
@@ -68,7 +90,6 @@ export default function Form() {
       level: event.target.elements.level.value,
     };
 
-    //const newComment = { recipe, name, comment, taste, level, id };
     //Immutability principle -> need to create new array with updated comments
     setComments([...comments, newComment]);
     //save comments to local storage
@@ -91,19 +112,8 @@ export default function Form() {
         <FormTitle>You may leave a comment here:</FormTitle>
         <form action="/api/form" method="post" onSubmit={handleSubmit}>
           <FormField>
-            <label htmlFor="recipe">Recipe:</label>
-            <input
-              type="text"
-              id="recipe"
-              name="recipe"
-              minLength="3"
-              maxLength="30"
-              required
-            />
-          </FormField>
-          <FormField>
-            <label htmlFor="name">Your name:</label>
-            <input
+            <StyledLabel htmlFor="name">Your name:</StyledLabel>
+            <SytledInput
               type="text"
               id="name"
               name="name"
@@ -113,8 +123,8 @@ export default function Form() {
             />
           </FormField>
           <FormField>
-            <label htmlFor="comment">Your comment:</label>
-            <input
+            <StyledLabel htmlFor="comment">Your comment:</StyledLabel>
+            <SytledInput
               type="text"
               id="comment"
               name="comment"
@@ -124,39 +134,30 @@ export default function Form() {
             />
           </FormField>
           <FormField>
-            <label htmlFor="taste">Taste</label>
-            <input
+            <StyledLabel htmlFor="taste">Taste</StyledLabel>
+            <SytledRange
               type="range"
               id="taste"
               name="taste"
               min="0"
-              max="100"
-              step="10"
+              max="10"
+              step="1"
             />
           </FormField>
           <FormField>
-            <label htmlFor="level">Difficulty level</label>
-            <input
+            <StyledLabel htmlFor="level">Difficulty level</StyledLabel>
+            <SytledRange
               type="range"
               id="level"
               name="level"
               min="0"
-              max="100"
-              step="10"
+              max="10"
+              step="1"
             />
           </FormField>
           <FormButton type="submit">Submit</FormButton>
         </form>
       </FormContainer>
-
-      {/* <CommentList>
-        {comments.map((comment) => (
-          <li key={comment.id}>
-            {comment.recipe} {comment.name}
-            {comment.comment}
-          </li>
-        ))}
-      </CommentList> */}
     </>
   );
 }
