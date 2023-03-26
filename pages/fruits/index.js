@@ -6,6 +6,7 @@ import {
   Container,
   ListItem,
   ListAvailability,
+  ListTitle,
 } from "@/components/StyledAvailability";
 import BackButton from "@/components/BackButton";
 import Image from "next/image";
@@ -30,7 +31,7 @@ export default function Fruits() {
         <ListAvailability>
           {availableFruits.map((item) => (
             <ListItem key={item.id}>
-              <h3>{item.name}</h3>
+              <ListTitle>{item.name}</ListTitle>
               <Link href={`/details/${item.id}`}>Get some inspiration!</Link>
             </ListItem>
           ))}

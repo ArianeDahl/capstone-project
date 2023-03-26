@@ -27,5 +27,28 @@ export const ListAvailability = styled.ul`
   margin: 10px;
 `;
 
-export const ListTitle = `
-text-align: center;`;
+export const ListTitle = styled.h3`
+  margin: 10px;
+  font-weight: bold;
+`;
+
+/**  EXAMPLE for styled LINK
+ * 
+ *const StyledLink = styled(Link)`
+  display: block;
+  width: 150px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #1a6d72;
+  color: #ddebec;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    background-color: #379ea5;
+    color: #333;
+  }
+ */

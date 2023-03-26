@@ -40,3 +40,14 @@ export default function Vegetables() {
     </>
   );
 }
+
+/**
+ * <Link href={`/details/${item.id}}`}>
+                    <Image
+                      src={"/.jpg"}
+                      alt={"Fruits&Veggies"}
+                      height={100}
+                      width={100}
+                    />
+                  </Link>
+ */
