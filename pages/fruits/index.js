@@ -7,6 +7,7 @@ import {
   ListItem,
   ListAvailability,
   ListTitle,
+  StyledLink,
 } from "@/components/StyledAvailability";
 import BackButton from "@/components/BackButton";
 import Image from "next/image";
@@ -23,6 +24,16 @@ export default function Fruits() {
     );
   });
 
+  availableFruits.sort(function (a, b) {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <>
       <Header />
@@ -31,9 +42,16 @@ export default function Fruits() {
         <ListAvailability>
           {availableFruits.map((item) => (
             <ListItem key={item.id}>
-              <ListTitle>{item.name}</ListTitle>
+              <StyledLink href={`/details/${item.id}`}>
+                <ListTitle>{item.name}</ListTitle>
+              </StyledLink>
               <Link href={`/details/${item.id}`}>
-                <Image src={item.src} alt={item.name} height={50} width={50} />
+                <Image
+                  src={item.src}
+                  alt={item.name}
+                  height={100}
+                  width={100}
+                />
               </Link>
             </ListItem>
           ))}

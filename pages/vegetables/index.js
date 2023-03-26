@@ -8,6 +8,7 @@ import {
   ListItem,
   ListAvailability,
   ListTitle,
+  StyledLink,
 } from "@/components/StyledAvailability";
 import BackButton from "@/components/BackButton";
 
@@ -22,6 +23,16 @@ export default function Vegetables() {
       currentMonth <= item.month_end
     );
   });
+  // order an array of objetcs with name
+  availableVegetables.sort(function (a, b) {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
 
   return (
     <>
@@ -31,9 +42,16 @@ export default function Vegetables() {
         <ListAvailability>
           {availableVegetables.map((item) => (
             <ListItem key={item.id}>
-              <ListTitle>{item.name}</ListTitle>
+              <StyledLink href={`/details/${item.id}`}>
+                <ListTitle>{item.name}</ListTitle>
+              </StyledLink>
               <Link href={`/details/${item.id}`}>
-                <Image src={item.src} alt={item.name} height={50} width={50} />
+                <Image
+                  src={item.src}
+                  alt={item.name}
+                  height={100}
+                  width={100}
+                />
               </Link>
             </ListItem>
           ))}

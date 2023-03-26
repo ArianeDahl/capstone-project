@@ -21,12 +21,6 @@ export default function CommentSection({ recipeSlug }) {
     (comment) => comment.recipeSlug === recipeSlug
   );
 
-  const handleDelete = (id) => {
-    const newComments = comments.filter((comment) => comment.id !== id);
-    setComments(newComments);
-    localStorage.setItem("comments", JSON.stringify(newComments));
-  };
-
   return (
     <>
       <CommentContainer>
@@ -36,9 +30,6 @@ export default function CommentSection({ recipeSlug }) {
         <CommentList>
           {filteredComments.map((comment) => (
             <CommentItem key={comment.id}>
-              <DeleteButton onClick={() => handleDelete(comment.id)}>
-                x
-              </DeleteButton>
               <p>
                 <strong>Name:</strong> {comment.name}
               </p>
@@ -60,19 +51,3 @@ export default function CommentSection({ recipeSlug }) {
     </>
   );
 }
-
-/*
-<CommentItem key={comment.id} style={{ display: "flex", alignItems: "flex-start" }}>
-  <DeleteButton>x</DeleteButton>
-  <div>
-    <h4>Name:</h4>
-    <p>{comment.name}</p>
-    <h4>Comment:</h4>
-    <p>{comment.comment}</p>
-    <h4>Taste:</h4>
-    <p>{comment.taste}</p>
-    <h4>Difficulty Level:</h4>
-    <p>{comment.level}</p>
-  </div>
-</CommentItem>
-*/

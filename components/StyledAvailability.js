@@ -7,9 +7,13 @@ export const TitleAvailability = styled.h2`
 
 export const Container = styled.div`
   justify-content: center;
+  padding: 20px;
 `;
 
 export const ListItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   margin-bottom: 10px;
@@ -17,7 +21,8 @@ export const ListItem = styled.li`
   cursor: pointer;
 
   &:hover {
-    background-color: papayawhip;
+    cursor: pointer;
+    background-color: #e6d9d9;
   }
 `;
 
@@ -28,8 +33,15 @@ export const ListAvailability = styled.ul`
 `;
 
 export const ListTitle = styled.h3`
-  margin: 10px;
+  /* font-size: 18px;   */
   font-weight: bold;
+  margin-right: 10px;
+`;
+
+export const StyledLink = styled.a`
+  margin: 20px;
+  text-decoration: none;
+  color: inherit;
 `;
 
 /**  EXAMPLE for styled LINK
