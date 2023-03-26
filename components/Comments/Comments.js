@@ -7,7 +7,7 @@ import {
   DeleteButton,
 } from "./StyledComments";
 
-export default function CommentSection({ recipeSlug }) {
+export default function CommentSection({ slug }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -17,9 +17,7 @@ export default function CommentSection({ recipeSlug }) {
     }
   }, []);
   // display comments for selected recipe only
-  const filteredComments = comments.filter(
-    (comment) => comment.recipeSlug === recipeSlug
-  );
+  const filteredComments = comments.filter((comment) => comment.slug === slug);
 
   return (
     <>

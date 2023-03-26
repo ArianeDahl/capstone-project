@@ -19,7 +19,7 @@ export default function RecipeDetails({ recipesArray }) {
         ingredients={recipe.recipe.ingredients}
       />
       <CommentSection recipeSlug={slug} />
-      <Form />
+      <Form recipeSlug={slug} />
       <BackButton />
     </>
   );

@@ -23,7 +23,7 @@ export default function Vegetables() {
       currentMonth <= item.month_end
     );
   });
-  // order an array of objetcs with name
+  // an array of objetcs in alphabetical order
   availableVegetables.sort(function (a, b) {
     if (a.name < b.name) {
       return -1;

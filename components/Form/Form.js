@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
-import { uid } from "uid";
+//import { uid } from "uid";
 import {
   FormContainer,
   FormButton,
@@ -12,38 +11,38 @@ import {
   SytledRange,
 } from "./StyledForm";
 
-export default function Form() {
+let nextId = 0;
+
+export default function Form({ slug }) {
   const [comments, setComments] = useState([]);
-  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [comment, setComment] = useState("");
-  const [taste, setTaste] = useState(5);
-  const [level, setLevel] = useState(5);
+  //const [taste, setTaste] = useState(5);
+  //const [level, setLevel] = useState(5);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const id = uid();
+    //const id = uid();
 
     const newComment = {
-      id: uid(),
-      name,
-      comment,
+      id: nextId++,
+      userName,
+      message,
       taste,
       level,
       timestamp: Date.now().toLocaleString(),
+      slug,
     };
 
-    //Immutability principle -> need to create new array with updated comments
     setComments([...comments, newComment]);
     // const comments = JSON.parse(localStorage.getItem("comments")) || [];
     //save comments to local storage
     localStorage.setItem("comments", JSON.stringify([...comments, newComment]));
     //clear form
+    console.log(comments);
     event.target.reset();
   };
-  /*
-   
-*/
-  // display comments
+
   useEffect(() => {
     const storedComments = localStorage.getItem("comments");
     if (storedComments) {
@@ -54,26 +53,26 @@ export default function Form() {
   return (
     <>
       <FormContainer>
-        <FormTitle>You may leave a comment here:</FormTitle>
-        <form action="/api/form" method="post" onSubmit={handleSubmit}>
-          <FormField>
-            <StyledLabel htmlFor="name">Your name:</StyledLabel>
+        <div>
+          <FormTitle>You may leave a comment here:</FormTitle>
+          <FormField onSubmit={handleSubmit}>
+            <StyledLabel htmlFor="userName">Your name:</StyledLabel>
             <SytledInput
               type="text"
-              id="name"
-              name="name"
+              id="userName"
+              name="userName"
               minLength="2"
               maxLength="20"
               required
-              onChange={(event) => setName(event.target.value)}
+              onChange={(event) => setUserName(event.target.value)}
             />
           </FormField>
           <FormField>
-            <StyledLabel htmlFor="comment">Your comment:</StyledLabel>
+            <StyledLabel htmlFor="message">Your comment:</StyledLabel>
             <SytledInput
               type="text"
-              id="comment"
-              name="comment"
+              id="message"
+              name="message"
               minLength="3"
               maxLength="200"
               onChange={(event) => setComment(event.target.value)}
@@ -103,7 +102,7 @@ export default function Form() {
             />
           </FormField>
           <FormButton type="submit">Submit</FormButton>
-        </form>
+        </div>
       </FormContainer>
     </>
   );

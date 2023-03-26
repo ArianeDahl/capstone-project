@@ -23,7 +23,7 @@ export default function Fruits() {
       currentMonth <= item.month_end
     );
   });
-
+  //an array of objetcs in alphabetical order
   availableFruits.sort(function (a, b) {
     if (a.name < b.name) {
       return -1;
