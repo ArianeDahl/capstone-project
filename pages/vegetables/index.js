@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
+import Image from "next/image";
 import {
   TitleAvailability,
   Container,
@@ -31,7 +32,9 @@ export default function Vegetables() {
           {availableVegetables.map((item) => (
             <ListItem key={item.id}>
               <ListTitle>{item.name}</ListTitle>
-              <Link href={`/details/${item.id}`}>Get some inspiration!</Link>
+              <Link href={`/details/${item.id}`}>
+                <Image src={item.src} alt={item.name} height={50} width={50} />
+              </Link>
             </ListItem>
           ))}
         </ListAvailability>
@@ -40,14 +43,3 @@ export default function Vegetables() {
     </>
   );
 }
-
-/**
- * <Link href={`/details/${item.id}}`}>
-                    <Image
-                      src={"/.jpg"}
-                      alt={"Fruits&Veggies"}
-                      height={100}
-                      width={100}
-                    />
-                  </Link>
- */

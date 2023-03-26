@@ -32,7 +32,9 @@ export default function Fruits() {
           {availableFruits.map((item) => (
             <ListItem key={item.id}>
               <ListTitle>{item.name}</ListTitle>
-              <Link href={`/details/${item.id}`}>Get some inspiration!</Link>
+              <Link href={`/details/${item.id}`}>
+                <Image src={item.src} alt={item.name} height={50} width={50} />
+              </Link>
             </ListItem>
           ))}
         </ListAvailability>
