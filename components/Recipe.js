@@ -25,22 +25,22 @@ const RecipeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 `;
 
 const RecipeTitle = styled.h2`
-  color: black;
+  color: #b76e79;
   margin: 20px;
   padding: 20px;
 `;
 const Title = styled.h3`
-  padding: 20px;
-  margin: 20px;
-  margin-bottom: 0px;
+  padding: 20px 10px 0px 10px;
+  margin: 30px 10px 10px 10px;
+  text-decoration: underline;
 `;
 
 const IngredientsList = styled.ul`
-  margin-top: 1rem;
-  padding-left: 0;
+  margin-: 10px;
+  padding: 10px;
   list-style-type: none;
 `;

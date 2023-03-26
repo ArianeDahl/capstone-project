@@ -1,29 +1,38 @@
 import Header from "@/components/Header";
 import styled from "styled-components";
 import Link from "next/link";
-import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <main>
+    <>
+      <Header />
       <MainContainer>
-        <>
-          <Header />
-          <h2>Seasonal dishes made easy!</h2>
-          <p>See what fruits & vegetables are in season this month:</p>
-          <LinkWrapper>
-            <StyledLink href="/fruits">Fruits</StyledLink>
-            <StyledLink href="/vegetables">Veggies</StyledLink>
-          </LinkWrapper>
-        </>
+        {/* <div>
+          <Image
+            alt="Homepage"
+            src="/homepage.jpg"
+            sizes="100vw"
+            layout="fill"
+            quality={100}
+            style={{ objectFit: "cover", zIndex: -1 }}
+          />
+        </div> */}
+        <h2>Seasonal dishes made easy!</h2>
+        <p>See what fruits & vegetables are in season this month:</p>
+        <LinkWrapper>
+          <StyledLink href="/fruits">Fruits</StyledLink>
+          <StyledLink href="/vegetables">Veggies</StyledLink>
+        </LinkWrapper>
       </MainContainer>
-    </main>
+    </>
   );
 }
 
 const MainContainer = styled.main`
   background-color: #f2f2f2;
   padding: 20px;
+  position: relative;
 `;
 
 const LinkWrapper = styled.div`

@@ -1,14 +1,13 @@
-import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { DeleteButton } from "./DeleteButton";
 import {
   CommentContainer,
   CommentList,
   CommentItem,
   TitleContainer,
+  DeleteButton,
 } from "./StyledComments";
 
-export default function CommentSection() {
+export default function CommentSection({ recipeSlug }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -17,11 +16,11 @@ export default function CommentSection() {
       setComments(JSON.parse(storedComments));
     }
   }, []);
-  /*
+  // display comments for selected recipe only
   const filteredComments = comments.filter(
-    (comment) => comment.recipeSlug === recipe.slug
+    (comment) => comment.recipeSlug === recipeSlug
   );
-*/
+
   const handleDelete = (id) => {
     const newComments = comments.filter((comment) => comment.id !== id);
     setComments(newComments);
@@ -35,7 +34,7 @@ export default function CommentSection() {
           <h3>Comments:</h3>
         </TitleContainer>
         <CommentList>
-          {comments.map((comment) => (
+          {filteredComments.map((comment) => (
             <CommentItem key={comment.id}>
               <DeleteButton onClick={() => handleDelete(comment.id)}>
                 x
@@ -51,6 +50,9 @@ export default function CommentSection() {
               <p>
                 <strong>Difficulty Level:</strong> {comment.level}
               </p>
+              <p>
+                <small>{comment.timestamp}</small>
+              </p>
             </CommentItem>
           ))}
         </CommentList>
@@ -60,10 +62,6 @@ export default function CommentSection() {
 }
 
 /*
-<DeleteButton onClick={() => handleDelete(comment.id)}>
-                    Delete
-                  </DeleteButton>
-
 <CommentItem key={comment.id} style={{ display: "flex", alignItems: "flex-start" }}>
   <DeleteButton>x</DeleteButton>
   <div>

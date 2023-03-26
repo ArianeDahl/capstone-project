@@ -4,7 +4,6 @@ import { data } from "@/lib/data";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Recipe from "@/components/Recipe";
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,26 +18,41 @@ const Item = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem;
+  margin: 10px;
 `;
 
 const Title = styled.h2`
   padding: 10px;
+  color: #3a746b;
 `;
 
 const Availability = styled.p`
-  font-style: italic;
-  margin: 0.5rem 0;
+  margin: 10px;
+  padding: 20px:
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #b76e76;
 `;
 
-const Button = styled.button`
-  color: black;
+const StyledParagraph = styled.p`
+  margin: 20px 30px;
+  padding: 20px:
+  font-size: 1.2rem;
+`;
+
+const RecipeTitle = styled.h3`
+  margin: 30px 10px;
 `;
 
 const RecipeList = styled.ul`
   list-style: none;
   padding: 0;
+  margin: 0;
+`;
+
+const RecipeContainer = styled.div`
   margin: 10px;
+  padding: 10px;
 `;
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -90,15 +104,14 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
               month: "long",
             })}
           </Availability>
-          <p>
-            Here are a few ideas. Click on the image for more details and
-            rating.
-          </p>
+          <StyledParagraph>
+            Here are a few recipes for your inspiration. Check them out!
+          </StyledParagraph>
           <RecipeList>
             {recipesArray.map((recipe) => {
               return (
-                <div key={recipe.slug}>
-                  <h3>{recipe.recipe.label}</h3>
+                <RecipeContainer key={recipe.slug}>
+                  <RecipeTitle>{recipe.recipe.label}</RecipeTitle>
                   <Link href={`/recipes/${recipe.slug}`}>
                     <Image
                       src={recipe.recipe.images.SMALL.url}
@@ -107,7 +120,7 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
                       width={200}
                     />
                   </Link>
-                </div>
+                </RecipeContainer>
               );
             })}
           </RecipeList>

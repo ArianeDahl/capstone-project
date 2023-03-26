@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
 import {
@@ -13,6 +14,10 @@ import {
 
 export default function Form() {
   const [comments, setComments] = useState([]);
+  const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
+  const [taste, setTaste] = useState(5);
+  const [level, setLevel] = useState(5);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,21 +25,24 @@ export default function Form() {
 
     const newComment = {
       id: uid(),
-      recipe: event.target.elements.recipe.value,
-      name: event.target.elements.name.value,
-      comment: event.target.elements.comment.value,
-      taste: event.target.elements.taste.value,
-      level: event.target.elements.level.value,
+      name,
+      comment,
+      taste,
+      level,
+      timestamp: Date.now().toLocaleString(),
     };
 
     //Immutability principle -> need to create new array with updated comments
     setComments([...comments, newComment]);
+    // const comments = JSON.parse(localStorage.getItem("comments")) || [];
     //save comments to local storage
     localStorage.setItem("comments", JSON.stringify([...comments, newComment]));
     //clear form
     event.target.reset();
   };
-
+  /*
+   
+*/
   // display comments
   useEffect(() => {
     const storedComments = localStorage.getItem("comments");
@@ -57,6 +65,7 @@ export default function Form() {
               minLength="2"
               maxLength="20"
               required
+              onChange={(event) => setName(event.target.value)}
             />
           </FormField>
           <FormField>
@@ -67,6 +76,7 @@ export default function Form() {
               name="comment"
               minLength="3"
               maxLength="200"
+              onChange={(event) => setComment(event.target.value)}
               required
             />
           </FormField>

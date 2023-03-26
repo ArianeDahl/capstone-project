@@ -1,7 +1,12 @@
 import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
-import styled from "styled-components";
+import {
+  TitleAvailability,
+  Container,
+  ListItem,
+  ListAvailability,
+} from "@/components/StyledAvailability";
 import BackButton from "@/components/BackButton";
 import Image from "next/image";
 
@@ -21,39 +26,17 @@ export default function Fruits() {
     <>
       <Header />
       <Container>
-        <h2>Available Fruits</h2>
-        <FruitList>
+        <TitleAvailability>Available Fruits</TitleAvailability>
+        <ListAvailability>
           {availableFruits.map((item) => (
-            <FruitItem key={item.id}>
+            <ListItem key={item.id}>
               <h3>{item.name}</h3>
               <Link href={`/details/${item.id}`}>Get some inspiration!</Link>
-            </FruitItem>
+            </ListItem>
           ))}
-        </FruitList>
+        </ListAvailability>
       </Container>
       <BackButton />
     </>
   );
 }
-
-const FruitList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 10px;
-`;
-
-const FruitItem = styled.li`
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  padding: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: papayawhip;
-  }
-`;
-
-const Container = styled.div`
-  justify-content: center;
-`;

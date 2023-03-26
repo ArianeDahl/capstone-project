@@ -1,7 +1,13 @@
 import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
-import styled from "styled-components";
+import {
+  TitleAvailability,
+  Container,
+  ListItem,
+  ListAvailability,
+  ListTitle,
+} from "@/components/StyledAvailability";
 import BackButton from "@/components/BackButton";
 
 export default function Vegetables() {
@@ -20,39 +26,17 @@ export default function Vegetables() {
     <>
       <Header />
       <Container>
-        <h2>Available Vegetables</h2>
-        <VeggieList>
+        <TitleAvailability>Available Vegetables</TitleAvailability>
+        <ListAvailability>
           {availableVegetables.map((item) => (
-            <VeggieItem key={item.id}>
-              <h3>{item.name}</h3>
+            <ListItem key={item.id}>
+              <ListTitle>{item.name}</ListTitle>
               <Link href={`/details/${item.id}`}>Get some inspiration!</Link>
-            </VeggieItem>
+            </ListItem>
           ))}
-        </VeggieList>
+        </ListAvailability>
       </Container>
       <BackButton />
     </>
   );
 }
-
-const VeggieList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 10px;
-`;
-
-const VeggieItem = styled.li`
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  padding: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: papayawhip;
-  }
-`;
-
-const Container = styled.div`
-  justify-content: center;
-`;

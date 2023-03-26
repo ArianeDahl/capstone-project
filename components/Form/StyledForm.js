@@ -18,13 +18,14 @@ export const FormField = styled.form`
   flex-direction: column;
   margin-bottom: 1rem;
   width: 100%;
-  background-color: #fbeed9;
+  background-color: #f4e6e7;
   padding: 20px;
   border-radius: 5px;
 `;
 
 export const StyledLabel = styled.label`
   margin-bottom: 10px;
+  padding: 0px;
   font-size: 1rem;
   color: #575d57;
 `;
@@ -32,26 +33,36 @@ export const StyledLabel = styled.label`
 export const SytledInput = styled.input`
   border-radius: 5px;
   border: 1px solid #b76e79;
-  padding: 0.5rem;
+  margin: 5px;
+  padding: 5px;
   font-size: 1rem;
 `;
 export const SytledRange = styled.input`
+margin: 5px;
 
 &::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
-  background-color: #green;
+  background-color: #darkblue;
   border-radius: 50%;
   cursor: pointer;
 
   &::-webkit-slider-runnable-track {
     width: 100%;
     height: 5px;
-    background-color: #9d4e5a;
+    background-color: #white;
     border-radius: 10px;
     cursor: pointer;
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: #darkblue;
+      cursor: pointer;
+      border-radius: 50%;
+    }
   }
 `;
 

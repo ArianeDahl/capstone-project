@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Header from "@/components/Header";
 import { useRouter } from "next/router";
 import Form from "@/components/Form/Form";
@@ -19,13 +18,9 @@ export default function RecipeDetails({ recipesArray }) {
         image={recipe.recipe.images.SMALL.url}
         ingredients={recipe.recipe.ingredients}
       />
-      <CommentSection />
+      <CommentSection recipeSlug={slug} />
       <Form />
       <BackButton />
     </>
   );
 }
-
-const CommentList = styled.ul`
-  list-style: none;
-`;

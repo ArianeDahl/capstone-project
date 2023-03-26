@@ -23,7 +23,7 @@ const Button = styled.button`
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: darkgreen;
-    color: #ffffff;
+    background-color: black;
+    color: #white;
   }
 `;
