@@ -5,7 +5,7 @@ export const CommentContainer = styled.section`
   flex-direction: column;
   margin: 0px 15px;
   padding-bottom: 20px;
-  background-color: #f4e6e7;
+  background-color: #f4f4f4;
 `;
 
 export const TitleContainer = styled.div`
@@ -22,8 +22,9 @@ export const CommentList = styled.ul`
 export const CommentItem = styled.li`
   margin: 10px;
   padding: 10px;
-  border: double 5px;
+  border: solid 5px;
   border-color: #b0757e;
+  background-color: #f4e6e7;
 
   position: relative;
 `;

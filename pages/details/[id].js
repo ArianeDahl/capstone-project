@@ -78,7 +78,7 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
         })
       );
     }
-  }, [data]);
+  }, [setRecipesArray, data]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;

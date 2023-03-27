@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@ export const FormTitle = styled.h3`
   color: #9d4e5a;
 `;
 
-export const FormField = styled.form`
+export const FormField = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -38,46 +38,53 @@ export const SytledInput = styled.input`
   font-size: 1rem;
 `;
 export const SytledRange = styled.input`
-margin: 5px;
-
-&::-webkit-slider-thumb {
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
   -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
+  background: #f4f4f4;
+  outline: none;
   height: 15px;
-  background-color: #darkblue;
-  border-radius: 50%;
-  cursor: pointer;
+  width: 90%;
+  border-radius: 10px;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 
-  &::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 5px;
-    background-color: #white;
-    border-radius: 10px;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #494399;
+    border-radius: 50%;
     cursor: pointer;
+  }
 
-    &::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      background: #darkblue;
-      cursor: pointer;
-      border-radius: 50%;
-    }
+  &::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #494399;
+    cursor: pointer;
+    border-radius: 50%;
   }
 `;
 
 export const FormButton = styled.button`
-  color: black;
+  color: #f1dee3;
   background-color: #b76e79;
-  border: none;
+  border: solid 1px;
+  border-color: #b76e79;
   border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 5px;
+  margin: 10px;
   font-size: 1rem;
   cursor: pointer;
 
   &:hover {
-    background-color: papayawhip;
-    color: white;
+    background-color: white;
+    color: #b76e79;
   }
 `;

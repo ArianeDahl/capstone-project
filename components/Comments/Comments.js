@@ -7,7 +7,7 @@ import {
   DeleteButton,
 } from "./StyledComments";
 
-export default function CommentSection({ slug }) {
+export default function CommentSection({ recipeSlug }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -16,8 +16,10 @@ export default function CommentSection({ slug }) {
       setComments(JSON.parse(storedComments));
     }
   }, []);
-  // display comments for selected recipe only
-  const filteredComments = comments.filter((comment) => comment.slug === slug);
+  // display comments for selected recipe only;
+  const filteredComments = comments.filter(
+    (comment) => comment.recipeSlug === recipeSlug
+  );
 
   return (
     <>
@@ -29,10 +31,10 @@ export default function CommentSection({ slug }) {
           {filteredComments.map((comment) => (
             <CommentItem key={comment.id}>
               <p>
-                <strong>Name:</strong> {comment.name}
+                <strong>Name:</strong> {comment.userName}
               </p>
               <h4>Comment:</h4>
-              <p>{comment.comment}</p>
+              <p>{comment.message}</p>
               <p>
                 <strong>Taste:</strong> {comment.taste}
               </p>
