@@ -11,17 +11,19 @@ export default function BackButton() {
 }
 
 const Button = styled.button`
-  background-color: #ffffff;
-  border: 2px solid #000000;
+  background-color: #55a3a3;
+  border: 1px solid ##55a3a3;
   border-radius: 5px;
-  color: #000000;
+  color: #e4eeee;
   cursor: pointer;
   font-size: 16px;
   padding: 8px 16px;
+  margin-bottom: 30px;
+  margin-top: 20px;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: darkgreen;
-    color: #ffffff;
+    background-color: #e4eeee;
+    color: #55a3a3;
   }
 `;

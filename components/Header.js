@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 const HeadContainer = styled.div`
   text-align: center;
-  background: papayawhip;
-  padding: 5px;
+  background: #5d9b9b;
+  padding: 10px;
 `;
-
+// #21888f  #489186  #5d9b9b
 const Title = styled.h1`
-  color: darkgreen;
+  color: #313c48;
   padding: 10px;
   margim: 20px;
 `;

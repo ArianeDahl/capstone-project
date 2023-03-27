@@ -4,14 +4,81 @@ import { data } from "@/lib/data";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Recipe from "@/components/Recipe";
+import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Item = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+`;
+
+const Title = styled.h2`
+  padding: 10px;
+  color: #3a746b;
+`;
+
+const Availability = styled.p`
+  margin: 10px;
+  padding: 20px:
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #b76e76;
+`;
+
+const StyledParagraph = styled.p`
+  margin: 20px 30px;
+  padding: 20px:
+  font-size: 1.2rem;
+`;
+
+const RecipeTitle = styled.h3`
+  margin: 30px 10px;
+`;
+
+const RecipeList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const RecipeContainer = styled.div`
+  margin: 10px;
+  padding: 10px;
+`;
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function Details({ item }) {
+export default function Details({ item, recipesArray, setRecipesArray }) {
   const router = useRouter();
   const { id } = router.query;
   const { data, error, isLoading } = useSWR(`/api/recipes/${id}`, fetcher);
+
+  useEffect(() => {
+    const recipes = data?.hits.slice(0, 5); //only display the first five recipes
+    if (recipes) {
+      setRecipesArray(
+        recipes.map((recipe) => {
+          return {
+            slug: recipe.recipe.label
+              .replace(",", "")
+              .toLocaleLowerCase()
+              .split(" ")
+              .join("-"),
+            ...recipe,
+          };
+        })
+      );
+    }
+  }, [setRecipesArray, data]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -21,33 +88,39 @@ export default function Details({ item }) {
     return <h1>Failed to load</h1>;
   }
 
-  const recipes = data?.hits.slice(0, 5); //only display the first five recipes
-
   return (
     <>
       <Header />
       <Container>
         <Item>
-          <h2>{item.name}</h2>
+          <Title>{item.name}</Title>
           <Availability>
-            Available from{" "}
+            Availability:{" "}
             {new Date(item.season_start).toLocaleString("default", {
               month: "long",
             })}{" "}
-            to{" "}
+            -{" "}
             {new Date(item.season_end).toLocaleString("default", {
               month: "long",
             })}
           </Availability>
+          <StyledParagraph>
+            Here are a few recipes for your inspiration. Check them out!
+          </StyledParagraph>
           <RecipeList>
-            {recipes.map((recipe) => {
+            {recipesArray.map((recipe) => {
               return (
-                <Recipe
-                  key={recipe.recipe.label}
-                  title={recipe.recipe.label}
-                  image={recipe.recipe.images.SMALL.url}
-                  ingredients={recipe.recipe.ingredients}
-                />
+                <RecipeContainer key={recipe.slug}>
+                  <RecipeTitle>{recipe.recipe.label}</RecipeTitle>
+                  <Link href={`/recipes/${recipe.slug}`}>
+                    <Image
+                      src={recipe.recipe.images.SMALL.url}
+                      alt={recipe.recipe.label}
+                      height={200}
+                      width={200}
+                    />
+                  </Link>
+                </RecipeContainer>
               );
             })}
           </RecipeList>
@@ -57,7 +130,7 @@ export default function Details({ item }) {
     </>
   );
 }
-
+// display fruit or veggie that the user selected
 export async function getStaticPaths() {
   const paths = data.map((item) => ({
     params: { id: item.id.toString() },
@@ -71,31 +144,3 @@ export async function getStaticProps({ params }) {
 
   return { props: { item } };
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Item = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem;
-`;
-
-const Availability = styled.p`
-  font-style: italic;
-  margin: 0.5rem 0;
-`;
-
-const Button = styled.button`
-  color: black;
-`;
-
-const RecipeList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 10px;
-`;
