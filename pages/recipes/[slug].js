@@ -10,9 +10,7 @@ export default function RecipeDetails({ recipesArray }) {
   const { slug } = router.query;
   const recipe = recipesArray.find((recipe) => recipe.slug === slug);
   console.log(recipe);
-  /* const handleAddComment = (newComment) => {
-    setComments([...comments, newComment]);
-  }; */
+
   return (
     <>
       <Header />
@@ -21,9 +19,16 @@ export default function RecipeDetails({ recipesArray }) {
         image={recipe?.recipe.images.SMALL.url}
         ingredients={recipe?.recipe.ingredients}
       />
-      <CommentSection recipeSlug={slug} /* comments={comments} */ />
-      <Form recipeSlug={slug} /* onAddComment={handleAddComment} */ />
+      <CommentSection
+        recipeSlug={slug} /* dataForm={dataForm} setDataForm={setDataForm}*/
+      />
+      <Form
+        recipeSlug={slug} /* dataForm={dataForm} setDataForm={setDataForm}*/
+      />
       <BackButton />
     </>
   );
 }
+/*
+const [dataForm, setDataForm] = useLocalStorage("dataForm", {defaultValue: [],})
+*/

@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import validateForm from "./ValidateForm";
 import { uid } from "uid";
 import {
   FormContainer,
+  FormColumn,
   FormButton,
   FormField,
   FormTitle,
   SytledInput,
   StyledLabel,
   SytledRange,
+  FormMessage,
 } from "./StyledForm";
 
-export default function Form({ recipeSlug, onAddComment }) {
+export default function Form({
+  recipeSlug /* dataForm={dataForm} setDataForm={setDataForm}*/,
+}) {
   const [comments, setComments] = useState([]);
   const [userName, setUserName] = useState("");
   const [message, setMessage] = useState("");
-  const [taste, setTaste] = useState(5);
-  const [level, setLevel] = useState(5);
+  const [taste, setTaste] = useState(0);
+  const [level, setLevel] = useState(0);
 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
@@ -24,13 +29,17 @@ export default function Form({ recipeSlug, onAddComment }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const id = uid();
-    const resultError = null;
+    const resultError = validateForm({ userName, message });
 
     if (resultError !== null) {
       setError(resultError);
+      return;
     }
 
-    // setSuccess("Comment submitted successfully!");
+    setUserName("");
+    setMessage("");
+    setError(null);
+    setSuccess(`Comment submitted succesfully!`);
 
     const newComment = {
       id: uid(),
@@ -61,8 +70,8 @@ export default function Form({ recipeSlug, onAddComment }) {
   return (
     <>
       <FormContainer onSubmit={handleSubmit}>
-        <div>
-          <FormTitle>Leave a comment here:</FormTitle>
+        <FormTitle>Leave a comment here:</FormTitle>
+        <FormColumn>
           <FormField>
             <StyledLabel htmlFor="userName">Your name:</StyledLabel>
             <SytledInput
@@ -86,6 +95,7 @@ export default function Form({ recipeSlug, onAddComment }) {
               value={message}
               minLength="3"
               maxLength="200"
+              rows={4}
               placeholder="Enter your comment"
               onChange={(event) => setMessage(event.target.value)}
               required
@@ -118,7 +128,13 @@ export default function Form({ recipeSlug, onAddComment }) {
             />
           </FormField>
           <FormButton type="submit">Submit</FormButton>
-        </div>
+          {error && (
+            <FormMessage initial="hidden" error>
+              {error}
+            </FormMessage>
+          )}
+          {success && <FormMessage initial="hidden">{success}</FormMessage>}
+        </FormColumn>
       </FormContainer>
     </>
   );

@@ -4,7 +4,10 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  margin: 10px;
+`;
+export const FormColumn = styled.div`
+  background-color: #ffffff;
 `;
 
 export const FormTitle = styled.h3`
@@ -36,13 +39,16 @@ export const SytledInput = styled.input`
   margin: 5px;
   padding: 5px;
   font-size: 1rem;
+
+  &:focus {
+    border: #8673a1;
+  }
 `;
 export const SytledRange = styled.input`
-  margin: 5px;
-  justify-content: center;
-  align-items: center;
   -webkit-appearance: none;
-  background: #f4f4f4;
+  -moz-appearance: none;
+  margin: 5px;
+
   outline: none;
   height: 15px;
   width: 90%;
@@ -54,19 +60,19 @@ export const SytledRange = styled.input`
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 15px;
-    height: 15px;
-    background-color: #494399;
+    width: 20px;
+    height: 20px;
+    background-color: #9d4e5a;
     border-radius: 50%;
     cursor: pointer;
   }
 
   &::-moz-range-thumb {
-    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     width: 20px;
     height: 20px;
-    background-color: #494399;
+    background-color: #9d4e5a;
     cursor: pointer;
     border-radius: 50%;
   }
@@ -87,4 +93,13 @@ export const FormButton = styled.button`
     background-color: white;
     color: #b76e79;
   }
+`;
+
+export const FormMessage = styled.div`
+  padding: 5px;
+  text-align: center;
+  margin-top: 1rem;
+  color: #c06573;
+  text-decoration: underline;
+  text-decoration-style: double;
 `;

@@ -29,7 +29,7 @@ const RecipeContainer = styled.div`
 `;
 
 const RecipeTitle = styled.h2`
-  color: #b76e79;
+  color: #5d9b9b;
   margin: 20px;
   padding: 20px;
 `;
