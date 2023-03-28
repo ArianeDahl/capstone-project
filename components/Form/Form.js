@@ -14,58 +14,43 @@ import {
   FormMessage,
 } from "./StyledForm";
 
-export default function Form({
-  recipeSlug /* dataForm={dataForm} setDataForm={setDataForm}*/,
-}) {
-  const [comments, setComments] = useState([]);
-  const [userName, setUserName] = useState("");
-  const [message, setMessage] = useState("");
-  const [taste, setTaste] = useState(0);
-  const [level, setLevel] = useState(0);
-
+export default function Form({ setDataForm, recipeSlug }) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const id = uid();
-    const resultError = validateForm({ userName, message });
 
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    const newComment = {
+      ...data,
+      id: uid(),
+      recipeSlug: recipeSlug,
+      timestamp: new Date().toLocaleDateString("de-DE"),
+    };
+
+    setDataForm((prevDataForm) => {
+      if (!prevDataForm[0]) {
+        return [{ ...newComment }];
+      }
+      return [{ ...newComment }, ...prevDataForm];
+    });
+
+    setSuccess(`Comment submitted succesfully!`);
+    setTimeout(() => setSuccess(null), 2000);
+    event.target.reset();
+  };
+  /* //
+    const resultError = validateForm({ userName, message });
     if (resultError !== null) {
       setError(resultError);
       return;
     }
-
-    setUserName("");
-    setMessage("");
     setError(null);
-    setSuccess(`Comment submitted succesfully!`);
-
-    const newComment = {
-      id: uid(),
-      userName,
-      message,
-      taste,
-      level,
-      recipeSlug,
-      timestamp: new Date().toLocaleDateString("de-DE"),
-    };
-    //   Update the comments state in the CommentSection component
-    const comments = JSON.parse(localStorage.getItem("comments")) || [];
-    //save comments to local storage
-    localStorage.setItem("comments", JSON.stringify([...comments, newComment]));
-    setComments([...comments, newComment]);
-    //clear form
-
-    event.target.reset();
-  };
-  // display submitted comments
-  useEffect(() => {
-    const storedComments = localStorage.getItem("comments");
-    if (storedComments) {
-      setComments(JSON.parse(storedComments));
-    }
-  }, []);
+    //
+  */
 
   return (
     <>
@@ -78,12 +63,10 @@ export default function Form({
               type="text"
               id="userName"
               name="userName"
-              value={userName}
               minLength="2"
               maxLength="20"
               placeholder="Enter your name"
               required
-              onChange={(event) => setUserName(event.target.value)}
             />
           </FormField>
           <FormField>
@@ -92,12 +75,10 @@ export default function Form({
               type="text"
               id="message"
               name="message"
-              value={message}
               minLength="3"
               maxLength="200"
               rows={4}
               placeholder="Enter your comment"
-              onChange={(event) => setMessage(event.target.value)}
               required
             />
           </FormField>
@@ -107,11 +88,9 @@ export default function Form({
               type="range"
               id="taste"
               name="taste"
-              value={taste}
               min="0"
               max="10"
               step="1"
-              onChange={(event) => setTaste(event.target.value)}
             />
           </FormField>
           <FormField>
@@ -120,11 +99,9 @@ export default function Form({
               type="range"
               id="level"
               name="level"
-              value={level}
               min="0"
               max="10"
               step="1"
-              onChange={(event) => setLevel(event.target.value)}
             />
           </FormField>
           <FormButton type="submit">Submit</FormButton>

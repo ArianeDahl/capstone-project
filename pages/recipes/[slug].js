@@ -4,12 +4,15 @@ import Form from "@/components/Form/Form";
 import BackButton from "@/components/BackButton";
 import Recipe from "@/components/Recipe";
 import CommentSection from "@/components/Comments/Comments";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function RecipeDetails({ recipesArray }) {
+  const [dataForm, setDataForm] = useLocalStorageState("dataForm", {
+    defaultValue: [],
+  });
   const router = useRouter();
   const { slug } = router.query;
   const recipe = recipesArray.find((recipe) => recipe.slug === slug);
-  console.log(recipe);
 
   return (
     <>
@@ -20,15 +23,12 @@ export default function RecipeDetails({ recipesArray }) {
         ingredients={recipe?.recipe.ingredients}
       />
       <CommentSection
-        recipeSlug={slug} /* dataForm={dataForm} setDataForm={setDataForm}*/
+        dataForm={dataForm}
+        setDataForm={setDataForm}
+        recipeSlug={slug}
       />
-      <Form
-        recipeSlug={slug} /* dataForm={dataForm} setDataForm={setDataForm}*/
-      />
+      <Form setDataForm={setDataForm} recipeSlug={slug} />
       <BackButton />
     </>
   );
 }
-/*
-const [dataForm, setDataForm] = useLocalStorage("dataForm", {defaultValue: [],})
-*/

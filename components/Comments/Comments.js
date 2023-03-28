@@ -7,26 +7,13 @@ import {
   DeleteButton,
 } from "./StyledComments";
 
-export default function CommentSection({
-  recipeSlug /* dataForm={dataForm} setDataForm={setDataForm}*/,
-}) {
-  const [comments, setComments] = useState([]);
-
-  useEffect(() => {
-    const storedComments = localStorage.getItem("comments");
-    if (storedComments) {
-      setComments(JSON.parse(storedComments));
-    }
-  }, []);
-  // display comments for selected recipe only;
-  const filteredComments = comments.filter(
+export default function CommentSection({ dataForm, setDataForm, recipeSlug }) {
+  const filteredComments = dataForm.filter(
     (comment) => comment.recipeSlug === recipeSlug
   );
 
   const handleDelete = (id) => {
-    const newComments = comments.filter((comment) => comment.id !== id);
-    setComments(newComments);
-    localStorage.setItem("comments", JSON.stringify(newComments));
+    setDataForm(dataForm.filter((comment) => comment.id !== id));
   };
 
   return (
