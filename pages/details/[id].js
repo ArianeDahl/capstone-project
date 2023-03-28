@@ -23,7 +23,7 @@ const Item = styled.div`
 
 const Title = styled.h2`
   padding: 10px;
-  color: #3a746b;
+  color: #5d9b9b;
 `;
 
 const Availability = styled.p`
@@ -42,6 +42,7 @@ const StyledParagraph = styled.p`
 
 const RecipeTitle = styled.h3`
   margin: 30px 10px;
+  color: #5d9b9b;
 `;
 
 const RecipeList = styled.ul`
