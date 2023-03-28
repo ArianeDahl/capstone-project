@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
-import validateForm from "./ValidateForm";
+
 import { uid } from "uid";
 import {
   FormContainer,
@@ -24,13 +24,14 @@ export default function Form({ setDataForm, recipeSlug }) {
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    // add unique id and recipe ID so that comment appears on selected recipe only
     const newComment = {
       ...data,
       id: uid(),
       recipeSlug: recipeSlug,
       timestamp: new Date().toLocaleDateString("de-DE"),
     };
-
+    // add comment
     setDataForm((prevDataForm) => {
       if (!prevDataForm[0]) {
         return [{ ...newComment }];
@@ -39,18 +40,10 @@ export default function Form({ setDataForm, recipeSlug }) {
     });
 
     setSuccess(`Comment submitted succesfully!`);
+    // message disappears after 2 sec
     setTimeout(() => setSuccess(null), 2000);
     event.target.reset();
   };
-  /* //
-    const resultError = validateForm({ userName, message });
-    if (resultError !== null) {
-      setError(resultError);
-      return;
-    }
-    setError(null);
-    //
-  */
 
   return (
     <>

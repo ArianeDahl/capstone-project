@@ -14,6 +14,7 @@ export default function CommentSection({ dataForm, setDataForm, recipeSlug }) {
 
   const handleDelete = (id) => {
     setDataForm(dataForm.filter((comment) => comment.id !== id));
+    alert("Comment will be deleted.");
   };
 
   return (
