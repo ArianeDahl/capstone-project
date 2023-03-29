@@ -4,7 +4,9 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  margin: 10px 20px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
 `;
 export const FormColumn = styled.div`
   background-color: #ffffff;

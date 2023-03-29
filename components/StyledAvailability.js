@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const TitleAvailability = styled.h2`
   margin: 30px 10px 20px 10px;
   padding: 20px;
+  font-weight: 500;
 `;
 
 export const Container = styled.div`
@@ -30,11 +31,13 @@ export const ListAvailability = styled.ul`
   list-style: none;
   padding: 0;
   margin: 10px;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
 `;
 
 export const ListTitle = styled.h3`
   /* font-size: 18px;   */
-  font-weight: bold;
+  font-weight: 400;
   margin-right: 10px;
 `;
 

@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import BackButton from "@/components/BackButton";
 import { data } from "@/lib/data";
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -7,54 +6,6 @@ import useSWR from "swr";
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Item = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-`;
-
-const Title = styled.h2`
-  padding: 10px;
-  color: #5d9b9b;
-`;
-
-const Availability = styled.p`
-  margin: 10px;
-  padding: 20px:
-  font-weight: 600;
-  font-size: 1.2em;
-  color: #b76e76;
-`;
-
-const StyledParagraph = styled.p`
-  margin: 20px 30px;
-  padding: 20px:
-  font-size: 1.2rem;
-`;
-
-const RecipeTitle = styled.h3`
-  margin: 30px 10px;
-  color: #5d9b9b;
-`;
-
-const RecipeList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-const RecipeContainer = styled.div`
-  margin: 10px;
-  padding: 10px;
-`;
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -127,7 +78,6 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
           </RecipeList>
         </Item>
       </Container>
-      <BackButton />
     </>
   );
 }
@@ -145,3 +95,56 @@ export async function getStaticProps({ params }) {
 
   return { props: { item } };
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  margin-bottom: 50px;
+  margin-padding: 50px;
+`;
+
+const Item = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+`;
+
+const Title = styled.h2`
+  padding: 10px;
+  color: #5d9b9b;
+`;
+
+const Availability = styled.p`
+margin: 10px;
+padding: 20px:
+font-weight: 600;
+font-size: 1.2em;
+color: #b76e76;
+`;
+
+const StyledParagraph = styled.p`
+margin: 20px 30px;
+padding: 20px:
+font-size: 1.2rem;
+`;
+
+const RecipeTitle = styled.h3`
+  margin: 30px 10px;
+  color: #5d9b9b;
+`;
+
+const RecipeList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+`;
+
+const RecipeContainer = styled.div`
+  margin: 10px;
+  padding: 10px;
+`;
