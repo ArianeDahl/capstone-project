@@ -1,3 +1,4 @@
+import Navigation from "@/components/Navigation";
 import GlobalStyle from "@/styles";
 import Head from "next/head";
 import { useEffect, useState } from "react";
@@ -20,6 +21,7 @@ export default function App({ Component, pageProps }) {
         recipesArray={recipesArray}
         setRecipesArray={setRecipesArray}
       />
+      <Navigation />
     </>
   );
 }
