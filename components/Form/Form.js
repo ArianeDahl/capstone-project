@@ -97,13 +97,13 @@ export default function Form({ setDataForm, recipeSlug }) {
               step="1"
             />
           </FormField>
-          <FormButton type="submit">Submit</FormButton>
           {error && (
             <FormMessage initial="hidden" error>
               {error}
             </FormMessage>
           )}
           {success && <FormMessage initial="hidden">{success}</FormMessage>}
+          <FormButton type="submit">Submit</FormButton>
         </FormColumn>
       </FormContainer>
     </>

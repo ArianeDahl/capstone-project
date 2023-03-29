@@ -22,13 +22,13 @@ export default function RecipeDetails({ recipesArray }) {
         image={recipe?.recipe.images.SMALL.url}
         ingredients={recipe?.recipe.ingredients}
       />
+      <BackButton />
       <CommentSection
         dataForm={dataForm}
         setDataForm={setDataForm}
         recipeSlug={slug}
       />
       <Form setDataForm={setDataForm} recipeSlug={slug} />
-      <BackButton />
     </>
   );
 }

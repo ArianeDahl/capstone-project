@@ -57,7 +57,6 @@ export default function Fruits() {
           ))}
         </ListAvailability>
       </Container>
-      <BackButton />
     </>
   );
 }
