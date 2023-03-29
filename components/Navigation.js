@@ -65,7 +65,6 @@ const StyledList = styled.ul`
   align-items: center;
   margin: 10px;
   padding: 10px;
-  padding-bottom: 15px;
 `;
 
 const StyledLink = styled(Link)`

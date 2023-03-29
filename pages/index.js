@@ -1,11 +1,9 @@
-import Header from "@/components/Header";
 import styled from "styled-components";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <MainContainer>
         <Greeting>Seasonal dishes made easy!</Greeting>
         <StyledParagraph>

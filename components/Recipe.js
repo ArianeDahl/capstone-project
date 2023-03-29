@@ -9,11 +9,13 @@ const Recipe = ({ title, image, ingredients }) => {
   return (
     <RecipeContainer>
       <RecipeTitle>{title}</RecipeTitle>
-      <Image src={image} alt={title} height={200} width={200} />
+      <RecipeImage src={image} alt={title} height={200} width={200} />
       <Title>Ingredients:</Title>
       <IngredientsList>
         {ingredientsWithId?.map((ingredient) => (
-          <li key={ingredient.id}>{ingredient.text}</li>
+          <IngredientItems key={ingredient.id}>
+            {ingredient.text}
+          </IngredientItems>
         ))}
       </IngredientsList>
     </RecipeContainer>
@@ -22,25 +24,42 @@ const Recipe = ({ title, image, ingredients }) => {
 export default Recipe;
 
 const RecipeContainer = styled.div`
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  margin-bottom: 10px;
+  background: #e4eeee;
+  box-shadow: 0px 5px 15px #474745;
 `;
 
 const RecipeTitle = styled.h2`
+  padding: 10px;
   color: #5d9b9b;
-  margin: 20px;
-  padding: 20px;
+  font-weight: 500;
+`;
+
+const RecipeImage = styled(Image)`
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #4a7c7c;
 `;
 const Title = styled.h3`
   padding: 20px 10px 0px 10px;
   margin: 30px 10px 10px 10px;
-  text-decoration: underline;
+  text-decoration: none;
+  font-weight: 500;
+  color: #313c48;
 `;
 
 const IngredientsList = styled.ul`
   margin-: 10px;
   padding: 10px;
   list-style-type: none;
+`;
+
+const IngredientItems = styled.li`
+  color: #313c48;
+  font-weight: 400;
 `;
