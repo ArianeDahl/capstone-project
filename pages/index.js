@@ -28,8 +28,8 @@ const MainContainer = styled.main`
 
 const Greeting = styled.h2`
   color: #1f3a3d;
-  margin: 30px;
-  padding: 20px;
+  margin: 20px;
+  padding: 10px;
 `;
 
 const StyledParagraph = styled.p`
@@ -42,23 +42,25 @@ const LinkWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 20px;
+  margin-bottom: 40px;
 `;
 
 const StyledLink = styled(Link)`
   display: block;
-  width: 150px;
-  margin: 20px;
-  padding: 10px;
+  width: 9rem;
+  margin: 25px;
+  padding: 15px;
   text-align: center;
-  border: 2px solid #333;
+  border: 2px solid #1a6d72;
   border-radius: 5px;
-  background-color: #1a6d72;
-  color: #ddebec;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+  background-color: #5d9b9b;
+  color: #313c48;
+
   &:hover {
-    background-color: #379ea5;
-    color: #333;
+    background-color: #1a6d72;
+    color: #ddebec;
   }
 `;

@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
 import Image from "next/image";
@@ -10,7 +9,6 @@ import {
   ListTitle,
   StyledLink,
 } from "@/components/StyledAvailability";
-import BackButton from "@/components/BackButton";
 
 export default function Vegetables() {
   const currentDate = new Date();
@@ -36,7 +34,6 @@ export default function Vegetables() {
 
   return (
     <>
-      <Header />
       <Container>
         <TitleAvailability>Available Vegetables</TitleAvailability>
         <ListAvailability>

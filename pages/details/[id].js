@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { data } from "@/lib/data";
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -42,7 +41,6 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
 
   return (
     <>
-      <Header />
       <Container>
         <Item>
           <Title>{item.name}</Title>
@@ -103,6 +101,8 @@ const Container = styled.div`
   margin: 20px;
   margin-bottom: 50px;
   margin-padding: 50px;
+  height: 100%;
+  width: 100%;
 `;
 
 const Item = styled.div`

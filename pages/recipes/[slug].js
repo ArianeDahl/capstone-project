@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { useRouter } from "next/router";
 import Form from "@/components/Form/Form";
 import BackButton from "@/components/BackButton";
@@ -16,7 +15,6 @@ export default function RecipeDetails({ recipesArray }) {
 
   return (
     <>
-      <Header />
       <Recipe
         title={recipe?.recipe.label}
         image={recipe?.recipe.images.SMALL.url}

@@ -1,10 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { GrHome, GrPrevious, GrRaspberry } from "react-icons/gr";
+import { GrRaspberry } from "react-icons/gr";
 import { TbCarrot } from "react-icons/tb";
 import { AiOutlineHome } from "react-icons/ai";
-import { GrLinkPrevious } from "react-icons/gr";
 import { HiArrowLeft } from "react-icons/hi";
 
 export default function Navigation() {
@@ -57,19 +56,20 @@ const NavBar = styled.nav`
   left: 0;
   right: 0;
   background: #5d9b9b;
-  padding: 0px;
+  padding: 5px;
 `;
 
 const StyledList = styled.ul`
   list-style: none;
   display: flex;
   align-items: center;
-  margin: 15px 0px;
+  margin: 10px;
   padding: 10px;
+  padding-bottom: 15px;
 `;
 
 const StyledLink = styled(Link)`
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin: 0.5rem;
   padding: 1rem;
   cursor: pointer;
@@ -77,10 +77,11 @@ const StyledLink = styled(Link)`
 `;
 
 const IconLink = styled.a`
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin: 0.5rem;
   padding: 1rem;
   cursor: pointer;
+  color: #313c48
 
   &:active {
     color: white;

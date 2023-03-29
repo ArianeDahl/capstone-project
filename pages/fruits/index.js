@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Link from "next/link";
 import { data } from "@/lib/data";
 import {
@@ -9,7 +8,6 @@ import {
   ListTitle,
   StyledLink,
 } from "@/components/StyledAvailability";
-import BackButton from "@/components/BackButton";
 import Image from "next/image";
 
 export default function Fruits() {
@@ -36,7 +34,6 @@ export default function Fruits() {
 
   return (
     <>
-      <Header />
       <Container>
         <TitleAvailability>Available Fruits</TitleAvailability>
         <ListAvailability>

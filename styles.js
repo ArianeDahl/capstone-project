@@ -21,3 +21,12 @@ export default createGlobalStyle`
     flex-direction: column;
 }
 `;
+
+/**
+ * 
+header / footer:
+ #313c48 color font
+#5d9b9b background color 
+
+ White: #f4f4f4
+ */

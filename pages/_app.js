@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Navigation from "@/components/Navigation";
 import GlobalStyle from "@/styles";
 import Head from "next/head";
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project - Seasony</title>
       </Head>
+      <Header />
       <Component
         {...pageProps}
         recipesArray={recipesArray}
