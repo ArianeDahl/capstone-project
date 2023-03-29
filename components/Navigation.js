@@ -10,7 +10,6 @@ import { HiArrowLeft } from "react-icons/hi";
 export default function Navigation() {
   const router = useRouter();
   const isActive = (path) => router.pathname === path;
-  console.log(router.pathname);
   return (
     <>
       <NavBar>
