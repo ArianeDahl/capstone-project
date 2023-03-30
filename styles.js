@@ -9,15 +9,8 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: helvetica;
+    background-color: #f0f0f0;
     text-align: center;
-    flex-grow: 1;
-
+    flex-grow: 1; 
   }
-
-  html {
-    min-height: 100%; 
-
-    display: flex;
-    flex-direction: column;
-}
 `;

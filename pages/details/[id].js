@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { data } from "@/lib/data";
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -42,9 +41,8 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
 
   return (
     <>
-      <Header />
       <Container>
-        <Item>
+        <StyledItem>
           <Title>{item.name}</Title>
           <Availability>
             Availability:{" "}
@@ -59,24 +57,24 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
           <StyledParagraph>
             Here are a few recipes for your inspiration. Check them out!
           </StyledParagraph>
-          <RecipeList>
-            {recipesArray.map((recipe) => {
-              return (
-                <RecipeContainer key={recipe.slug}>
-                  <RecipeTitle>{recipe.recipe.label}</RecipeTitle>
-                  <Link href={`/recipes/${recipe.slug}`}>
-                    <Image
-                      src={recipe.recipe.images.SMALL.url}
-                      alt={recipe.recipe.label}
-                      height={200}
-                      width={200}
-                    />
-                  </Link>
-                </RecipeContainer>
-              );
-            })}
-          </RecipeList>
-        </Item>
+        </StyledItem>
+        <RecipeList>
+          {recipesArray.map((recipe) => {
+            return (
+              <StyledRecipeContainer key={recipe.slug}>
+                <StyledRecipeTitle>{recipe.recipe.label}</StyledRecipeTitle>
+                <StyledRecipeLink href={`/recipes/${recipe.slug}`}>
+                  <StyledRecipeImage
+                    src={recipe.recipe.images.SMALL.url}
+                    alt={recipe.recipe.label}
+                    height={200}
+                    width={200}
+                  />
+                </StyledRecipeLink>
+              </StyledRecipeContainer>
+            );
+          })}
+        </RecipeList>
       </Container>
     </>
   );
@@ -97,54 +95,87 @@ export async function getStaticProps({ params }) {
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-  margin-bottom: 50px;
-  margin-padding: 50px;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  position: absolute;
+  bottom: 104px;
+  top: 120px;
+  text-align: center;
 `;
 
-const Item = styled.div`
+const StyledItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   margin: 10px;
+  padding: 10px;
 `;
 
 const Title = styled.h2`
   padding: 10px;
   color: #5d9b9b;
+  font-weight: 500;
 `;
 
 const Availability = styled.p`
-margin: 10px;
-padding: 20px:
-font-weight: 600;
-font-size: 1.2em;
-color: #b76e76;
-`;
+  margin: 10px;
+  padding: 20px:
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #b76e76;
+  `;
 
 const StyledParagraph = styled.p`
-margin: 20px 30px;
-padding: 20px:
-font-size: 1.2rem;
-`;
-
-const RecipeTitle = styled.h3`
-  margin: 30px 10px;
-  color: #5d9b9b;
-`;
+  margin: 30px;
+  padding: 10px:
+  font-size: 1.2rem;
+  color: #313c48 
+  `;
 
 const RecipeList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 100px;
 `;
-
-const RecipeContainer = styled.div`
+// Recipe Container
+const StyledRecipeContainer = styled.div`
   margin: 10px;
   padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  background: #e4eeee;
+  box-shadow: 0px 5px 15px #474745;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #e6d9d9;
+    color: #b76e76;
+  }
+`;
+
+const StyledRecipeTitle = styled.h3`
+  margin: 15px;
+  padding: 15px;
+  color: #5d9b9b;
+  font-weight: 500;
+`;
+
+const StyledRecipeLink = styled(Link)`
+  text-decoration: none;
+  margin: 20px;
+  padding: 10px;
+`;
+
+const StyledRecipeImage = styled(Image)`
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #474745;
 `;

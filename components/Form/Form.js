@@ -48,7 +48,7 @@ export default function Form({ setDataForm, recipeSlug }) {
   return (
     <>
       <FormContainer onSubmit={handleSubmit}>
-        <FormTitle>Leave a comment here:</FormTitle>
+        <FormTitle>You may leave a comment here:</FormTitle>
         <FormColumn>
           <FormField>
             <StyledLabel htmlFor="userName">Your name:</StyledLabel>

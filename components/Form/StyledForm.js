@@ -4,17 +4,20 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 20px;
+  text-align: center;
+  margin: 10px;
   margin-bottom: 50px;
   padding-bottom: 50px;
 `;
 export const FormColumn = styled.div`
-  background-color: #ffffff;
+  padding: 10px;
+  margin: 10px;
 `;
 
 export const FormTitle = styled.h3`
   font-size: 1, 5rem;
-  margin-bottom: 30px;
+  font-weight: 500;
+  margin: 20px;
   color: #9d4e5a;
 `;
 
@@ -43,14 +46,13 @@ export const SytledInput = styled.input`
   font-size: 1rem;
 
   &:focus {
-    border: #8673a1;
+    border: #b76e79;
   }
 `;
 export const SytledRange = styled.input`
   -webkit-appearance: none;
   -moz-appearance: none;
   margin: 5px;
-
   outline: none;
   height: 15px;
   width: 90%;

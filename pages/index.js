@@ -1,11 +1,9 @@
-import Header from "@/components/Header";
 import styled from "styled-components";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <MainContainer>
         <Greeting>Seasonal dishes made easy!</Greeting>
         <StyledParagraph>
@@ -20,45 +18,50 @@ export default function Home() {
   );
 }
 
-const MainContainer = styled.main`
+const MainContainer = styled.div`
   background-color: #f2f2f2;
   padding: 20px;
+  margin-bottom: 50px;
   position: relative;
+  text-align: center;
 `;
 
 const Greeting = styled.h2`
   color: #1f3a3d;
-  margin: 30px;
+  margin: 10px;
   padding: 20px;
+  font-weight: 500;
 `;
 
 const StyledParagraph = styled.p`
   margin: 10px 40px;
-  padding: 0px;
+  padding: 10px;
 `;
 
 const LinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 10px;
+  margin-bottom: 40px;
 `;
 
 const StyledLink = styled(Link)`
   display: block;
-  width: 150px;
-  margin: 20px;
-  padding: 10px;
+  width: 9rem;
+  margin: 25px;
+  padding: 15px;
   text-align: center;
-  border: 2px solid #333;
+  border: 2px solid #1a6d72;
   border-radius: 5px;
-  background-color: #1a6d72;
-  color: #ddebec;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
+  background-color: #5d9b9b;
+  color: #313c48;
+
   &:hover {
-    background-color: #379ea5;
-    color: #333;
+    background-color: #1a6d72;
+    color: #ddebec;
   }
 `;
