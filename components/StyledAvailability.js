@@ -10,6 +10,7 @@ export const Container = styled.div`
   position: absolute;
   bottom: 104px;
   top: 120px;
+  text-align: center;
 `;
 
 export const TitleAvailability = styled.h2`

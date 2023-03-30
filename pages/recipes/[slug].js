@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Form from "@/components/Form/Form";
-import BackButton from "@/components/BackButton";
+
 import Recipe from "@/components/Recipe";
 import CommentSection from "@/components/Comments/Comments";
 import useLocalStorageState from "use-local-storage-state";
@@ -20,7 +20,7 @@ export default function RecipeDetails({ recipesArray }) {
         image={recipe?.recipe.images.SMALL.url}
         ingredients={recipe?.recipe.ingredients}
       />
-      <BackButton />
+
       <CommentSection
         dataForm={dataForm}
         setDataForm={setDataForm}

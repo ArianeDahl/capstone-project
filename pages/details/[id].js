@@ -102,6 +102,7 @@ const Container = styled.div`
   position: absolute;
   bottom: 104px;
   top: 120px;
+  text-align: center;
 `;
 
 const StyledItem = styled.div`
@@ -150,8 +151,15 @@ const StyledRecipeContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  text-align: center;
   background: #e4eeee;
   box-shadow: 0px 5px 15px #474745;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #e6d9d9;
+    color: #b76e76;
+  }
 `;
 
 const StyledRecipeTitle = styled.h3`
@@ -163,11 +171,11 @@ const StyledRecipeTitle = styled.h3`
 
 const StyledRecipeLink = styled(Link)`
   text-decoration: none;
-  margin: 10px;
+  margin: 20px;
   padding: 10px;
 `;
 
 const StyledRecipeImage = styled(Image)`
   border-radius: 5px;
-  box-shadow: 0px 5px 10px #4a7c7c;
+  box-shadow: 0px 5px 10px #474745;
 `;

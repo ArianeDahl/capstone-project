@@ -18,28 +18,31 @@ export default function Home() {
   );
 }
 
-const MainContainer = styled.main`
+const MainContainer = styled.div`
   background-color: #f2f2f2;
   padding: 20px;
+  margin-bottom: 50px;
   position: relative;
+  text-align: center;
 `;
 
 const Greeting = styled.h2`
   color: #1f3a3d;
-  margin: 20px;
-  padding: 10px;
+  margin: 10px;
+  padding: 20px;
+  font-weight: 500;
 `;
 
 const StyledParagraph = styled.p`
   margin: 10px 40px;
-  padding: 0px;
+  padding: 10px;
 `;
 
 const LinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 10px;
   margin-bottom: 40px;
 `;
 
