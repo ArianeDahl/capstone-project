@@ -8,7 +8,7 @@ import {
   ListAvailability,
   ListTitle,
   StyledLink,
-} from "@/components/StyledAvailability";
+} from "@/components/Availability/StyledAvailability";
 
 export default function Vegetables() {
   const currentDate = new Date();

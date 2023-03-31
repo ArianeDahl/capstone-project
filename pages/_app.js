@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import Navigation from "@/components/Navigation";
+import Header from "@/components/Header/Header";
+import Navigation from "@/components/Navigation/Navigation";
 import GlobalStyle from "@/styles";
 import Head from "next/head";
 import { useEffect, useState } from "react";
