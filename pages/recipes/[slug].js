@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Form from "@/components/Form/Form";
 
 import Recipe from "@/components/Recipe/Recipe";
-import CommentSection from "@/components/Comments/Comments";
+import CommentSection from "@/components/Comment/Comments";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function RecipeDetails({ recipesArray }) {
