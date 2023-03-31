@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Form from "@/components/Form/Form";
 
-import Recipe from "@/components/Recipe";
+import Recipe from "@/components/Recipe/Recipe";
 import CommentSection from "@/components/Comments/Comments";
 import useLocalStorageState from "use-local-storage-state";
 

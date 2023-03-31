@@ -7,7 +7,7 @@ import {
   ListAvailability,
   ListTitle,
   StyledLink,
-} from "@/components/StyledAvailability";
+} from "@/components/Availability/StyledAvailability";
 import Image from "next/image";
 
 export default function Fruits() {
