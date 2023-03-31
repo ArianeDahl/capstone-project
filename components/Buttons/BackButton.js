@@ -5,7 +5,9 @@ export default function BackButton() {
   const router = useRouter();
   return (
     <>
-      <Button onClick={() => router.back()}>Back</Button>
+      <Button onClick={() => router.back()} aria-label="Previous page">
+        Back
+      </Button>
     </>
   );
 }

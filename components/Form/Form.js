@@ -103,7 +103,9 @@ export default function Form({ setDataForm, recipeSlug }) {
             </FormMessage>
           )}
           {success && <FormMessage initial="hidden">{success}</FormMessage>}
-          <FormButton type="submit">Submit</FormButton>
+          <FormButton type="submit" aria-label="submit comment" tabIndex="0">
+            Submit
+          </FormButton>
         </FormColumn>
       </FormContainer>
     </>
