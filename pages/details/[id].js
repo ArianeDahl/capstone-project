@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ItemCard from "@/components/ItemCard";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -42,22 +43,10 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
   return (
     <>
       <Container>
-        <StyledItem>
-          <Title>{item.name}</Title>
-          <Availability>
-            Availability:{" "}
-            {new Date(item.season_start).toLocaleString("default", {
-              month: "long",
-            })}{" "}
-            -{" "}
-            {new Date(item.season_end).toLocaleString("default", {
-              month: "long",
-            })}
-          </Availability>
-          <StyledParagraph>
-            Here are a few recipes for your inspiration. Check them out!
-          </StyledParagraph>
-        </StyledItem>
+        <ItemCard item={item} />
+        <StyledParagraph>
+          Here are a few recipes for your inspiration. Check them out!
+        </StyledParagraph>
         <RecipeList>
           {recipesArray.map((recipe) => {
             return (
@@ -104,29 +93,6 @@ const Container = styled.div`
   top: 120px;
   text-align: center;
 `;
-
-const StyledItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  margin: 10px;
-  padding: 10px;
-`;
-
-const Title = styled.h2`
-  padding: 10px;
-  color: #5d9b9b;
-  font-weight: 500;
-`;
-
-const Availability = styled.p`
-  margin: 10px;
-  padding: 20px:
-  font-weight: 600;
-  font-size: 1.2em;
-  color: #b76e76;
-  `;
 
 const StyledParagraph = styled.p`
   margin: 30px;
