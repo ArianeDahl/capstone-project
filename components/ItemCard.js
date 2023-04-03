@@ -1,10 +1,10 @@
 import FavoriteButton from "./Buttons/FavoriteButton";
 import styled from "styled-components";
 
-export default function ItemCard({ item }) {
+export default function ItemCard({ item, isFavorite, setIsFavorite }) {
   return (
     <StyledItem>
-      <FavoriteButton />
+      <FavoriteButton isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
       <Title>{item.name}</Title>
       <Availability>
         Availability:{" "}

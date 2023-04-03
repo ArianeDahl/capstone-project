@@ -1,24 +1,17 @@
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import styled from "styled-components";
 
-// border -> inactive
+export default function FavoriteButton({ isFavorite, setIsFavorite }) {
+  const handleClick = () => {
+    setIsFavorite(!isFavorite);
+  };
 
-export default function FavoriteButton(/* {
-    isFavorite,
-    handleToggleFavorite,
-    item
-  } */) {
   return (
-    <Button /* onClick={() => {handleToggleFavorite(item.id);}} */>
-      <MdFavoriteBorder />
-      {/*  {isFavorite ? (
-          <button>
-            <MdFavorite />
-          </button>
-        ) : (
-          <button>{ <MdavoriteBorder />/}</button>
-        )} */}
-    </Button>
+    <>
+      <Button on onClick={handleClick}>
+        {isFavorite ? <MdFavorite /> : <MdFavoriteBorder />}
+      </Button>
+    </>
   );
 }
 
@@ -36,4 +29,8 @@ const Button = styled.button`
   z-index: 1;
   font-size: 1.3rem;
   color: #b76e76;
+
+  &:hover {
+    color: #e6d9d9;
+  }
 `;

@@ -9,7 +9,13 @@ import ItemCard from "@/components/ItemCard";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function Details({ item, recipesArray, setRecipesArray }) {
+export default function Details({
+  item,
+  recipesArray,
+  setRecipesArray,
+  isFavorite,
+  setIsFavorite,
+}) {
   const router = useRouter();
   const { id } = router.query;
   const { data, error, isLoading } = useSWR(`/api/recipes/${id}`, fetcher);
@@ -43,7 +49,11 @@ export default function Details({ item, recipesArray, setRecipesArray }) {
   return (
     <>
       <Container>
-        <ItemCard item={item} />
+        <ItemCard
+          item={item}
+          isFavorite={isFavorite}
+          setIsFavorite={setIsFavorite}
+        />
         <StyledParagraph>
           Here are a few recipes for your inspiration. Check them out!
         </StyledParagraph>
