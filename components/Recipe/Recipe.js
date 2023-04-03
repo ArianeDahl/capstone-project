@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import BackButton from "../BackButton";
+import BackButton from "../Buttons/BackButton";
 
 const Recipe = ({ title, image, ingredients }) => {
   const ingredientsWithId = ingredients?.map((ingredient, index) => ({

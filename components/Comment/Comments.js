@@ -28,7 +28,11 @@ export default function CommentSection({ dataForm, setDataForm, recipeSlug }) {
         <CommentList>
           {filteredComments.map((comment) => (
             <CommentItem key={comment.id}>
-              <DeleteButton onClick={() => handleDelete(comment.id)}>
+              <DeleteButton
+                onClick={() => handleDelete(comment.id)}
+                tabIndex="0" // for accessibility
+                aria-label="Delete comment"
+              >
                 x
               </DeleteButton>
               <CommentWrapper>

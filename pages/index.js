@@ -4,21 +4,25 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <MainContainer>
-        <Greeting>Seasonal dishes made easy!</Greeting>
+      <StyledMainContainer>
+        <StyledHeading>Seasonal dishes made easy!</StyledHeading>
         <StyledParagraph>
           Check out which fruits & vegetables are in season this month:
         </StyledParagraph>
-        <LinkWrapper>
-          <StyledLink href="/fruits">Fruits</StyledLink>
-          <StyledLink href="/vegetables">Veggies</StyledLink>
-        </LinkWrapper>
-      </MainContainer>
+        <StyledLinkWrapper aria-label="Seasonal fruits and vegetables">
+          <StyledLink href="/fruits" aria-label="Seasonal fruits">
+            Fruits
+          </StyledLink>
+          <StyledLink href="/vegetables" aria-label="Seasonal vegetables">
+            Veggies
+          </StyledLink>
+        </StyledLinkWrapper>
+      </StyledMainContainer>
     </>
   );
 }
 
-const MainContainer = styled.div`
+const StyledMainContainer = styled.div`
   background-color: #f2f2f2;
   padding: 20px;
   margin-bottom: 50px;
@@ -26,7 +30,7 @@ const MainContainer = styled.div`
   text-align: center;
 `;
 
-const Greeting = styled.h2`
+const StyledHeading = styled.h2`
   color: #1f3a3d;
   margin: 10px;
   padding: 20px;
@@ -38,7 +42,7 @@ const StyledParagraph = styled.p`
   padding: 10px;
 `;
 
-const LinkWrapper = styled.div`
+const StyledLinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
