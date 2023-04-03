@@ -15,6 +15,9 @@ export default function Details({
   setRecipesArray,
   isFavorite,
   setIsFavorite,
+  onHandleToggleFavorite,
+  favoriteItems,
+  setFavoriteItems,
 }) {
   const router = useRouter();
   const { id } = router.query;
@@ -53,6 +56,9 @@ export default function Details({
           item={item}
           isFavorite={isFavorite}
           setIsFavorite={setIsFavorite}
+          onHandleToggleFavorite={onHandleToggleFavorite}
+          favoriteItems={favoriteItems}
+          setFavoriteItems={setFavoriteItems}
         />
         <StyledParagraph>
           Here are a few recipes for your inspiration. Check them out!
