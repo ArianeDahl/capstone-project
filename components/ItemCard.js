@@ -1,11 +1,10 @@
 import FavoriteButton from "./Favorite/FavoriteButton";
 import styled from "styled-components";
 
-export default function ItemCard({ item, onHandleToggleFavorite }) {
+export default function ItemCard({ item, onHandleToggleFavorite, isFavorite }) {
   const handleClick = () => {
     onHandleToggleFavorite(item.id);
   };
-  console.log(item);
 
   return (
     <StyledItem>

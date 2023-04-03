@@ -8,24 +8,23 @@ export default function FavoritePage({
   const favorites = favoriteItems.filter(
     (favoriteItem) => favoriteItem.isFavorite === true
   );
-  console.log(favorites);
+
   return (
     <>
-      <StyledFavoriteTitle>My Favorites Fruits & Veggies:</StyledFavoriteTitle>
-      <ul>
+      <StyledFavoriteTitle>My Favorites:</StyledFavoriteTitle>
+      <StyledFavoriteList>
         {favorites.map((favorite) => {
           return (
-            <li key={favorite.id}>
+            <StyledFavoriteItems key={favorite.id}>
               <ItemCard
                 item={favorite}
                 isFavorite={favorite.isFavorite}
-                setIsFavorite={onHandleToggleFavorite}
                 onHandleToggleFavorite={onHandleToggleFavorite}
               />
-            </li>
+            </StyledFavoriteItems>
           );
         })}
-      </ul>
+      </StyledFavoriteList>
     </>
   );
 }
@@ -34,6 +33,28 @@ const StyledFavoriteTitle = styled.h2`
   text-align: center;
   color: #5d9b9b;
   font-weight: 400;
-  margin: 20px;
-  padding: 20px;
+  margin-top: 20px;
+  margin: 20px 10px;
+  padding: 10px;
+`;
+
+const StyledFavoriteList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 100px;
+`;
+
+const StyledFavoriteItems = styled.li`
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
 `;

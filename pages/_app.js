@@ -38,7 +38,6 @@ export default function App({ Component, pageProps }) {
         isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
         favoriteItems={favoriteItems}
-        setfavoriteItems={setFavoriteItems}
         onHandleToggleFavorite={handleToggleFavorite}
       />
       <Navigation />
