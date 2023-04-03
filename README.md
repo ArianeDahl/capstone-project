@@ -1,6 +1,6 @@
 # Capstone Project: Seasony
 
-Seasony is a personal assistant to make a healthy and seasonal nutrition easier- it tells you which fruits & vegetables are in season and gives inspiration by suggesting recipes. You can add your favorites to a list and leave comments on the recipes.
+Seasony is an app to make a healthy and seasonal nutrition easier. It is designed to tell you which fruits & vegetables are in season and to give inspiration by suggesting recipes for the selected fruit/ veggie. You can add your favorites to a list and leave comments on the recipes.
 
 
 ## Demo
