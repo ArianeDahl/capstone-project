@@ -1,12 +1,11 @@
-# Seasony
+# Capstone Project: Seasony
 
-Seasony is a personal assistant to make a healthy and seasonal nutrition easier- it tells you which fruits & vegetables are in season and gives inspiration by suggesting recipes.
+Seasony is a personal assistant to make a healthy and seasonal nutrition easier- it tells you which fruits & vegetables are in season and gives inspiration by suggesting recipes. You can add your favorites to a list and leave comments on the recipes.
 
-## Description
-
-This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.
 
 ## Demo
+
+**IMPORTANT: This is a mobile version!**
 
 You can find a demo on Vercel: [Demo Seasony](capstone-project-cr0l4ybzl-arianedahl.vercel.app)
 
