@@ -1,8 +1,9 @@
 import Header from "@/components/Header/Header";
 import Navigation from "@/components/Navigation/Navigation";
+import { data } from "@/lib/data";
 import GlobalStyle from "@/styles";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
@@ -11,6 +12,17 @@ export default function App({ Component, pageProps }) {
   });
 
   const [isFavorite, setIsFavorite] = useState();
+  const [favoriteItems, setFavoriteItems] = useState(data);
+
+  function handleToggleFavorite(id) {
+    setFavoriteItems(
+      favoriteItems.map((favoriteItem) =>
+        favoriteItem.id === id
+          ? { ...favoriteItem, isFavorite: !favoriteItem.isFavorite }
+          : favoriteItem
+      )
+    );
+  }
 
   return (
     <>
@@ -25,6 +37,8 @@ export default function App({ Component, pageProps }) {
         setRecipesArray={setRecipesArray}
         isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
+        favoriteItems={favoriteItems}
+        onHandleToggleFavorite={handleToggleFavorite}
       />
       <Navigation />
     </>

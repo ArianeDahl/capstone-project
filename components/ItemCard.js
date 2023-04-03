@@ -1,10 +1,16 @@
-import FavoriteButton from "./Buttons/FavoriteButton";
+import FavoriteButton from "./Favorite/FavoriteButton";
 import styled from "styled-components";
 
-export default function ItemCard({ item, isFavorite, setIsFavorite }) {
+export default function ItemCard({ item, onHandleToggleFavorite, isFavorite }) {
+  const handleClick = () => {
+    onHandleToggleFavorite(item.id);
+  };
+
   return (
     <StyledItem>
-      <FavoriteButton isFavorite={isFavorite} setIsFavorite={setIsFavorite} />
+      <StyledButton onClick={handleClick}>
+        <FavoriteButton isFavorite={item.isFavorite} />
+      </StyledButton>
       <Title>{item.name}</Title>
       <Availability>
         Availability:{" "}
@@ -30,6 +36,25 @@ const StyledItem = styled.div`
   border-radius: 10px;
   border: 1px solid #5d9b9b;
   position: relative;
+`;
+const StyledButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  margin: 10px;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  font-size: 1.3rem;
+  color: #b76e76;
+
+  &:hover {
+    color: #e6d9d9;
+  }
 `;
 
 const Title = styled.h2`
