@@ -15,7 +15,7 @@ You can find a demo on Vercel:
 
 ## ![Seasony](/public/assets/images/Seasony.png)
 
-## Teck Stack
+## Tech Stack
 
 - Next.js
 - React
