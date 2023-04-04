@@ -4,6 +4,7 @@ Seasony is an app to make a healthy and seasonal nutrition easier. It is designe
 
 ![Header](/public/assets/images/homepage%202.png)
 
+
 ## Demo
 
 **IMPORTANT: This is a mobile version!**
